@@ -1,6 +1,8 @@
 import os
 import requests
 from TIENDA import tienda
+print("Hola")
+
 
 def menu_inicial():
     os.system('cls')
