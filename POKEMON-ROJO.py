@@ -109,7 +109,7 @@ os.system('cls')
 os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
 print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
-print('\n\n\t\t By Probando commit   1641417\n')
+
 
 
 
