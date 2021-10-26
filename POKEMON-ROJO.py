@@ -166,15 +166,6 @@ print('\t\t By Angel André Cotco Cuzal                  1518321')
 print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
 
 
-print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
-print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
-print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
-print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
-print('\n\n\t\t By Denys carreto \n')
-print('\n\n\t\t By ELena \n')
-print('\n\n\t\t By ELena \n')
-
-
 
 
 
