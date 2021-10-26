@@ -2,6 +2,10 @@ import os
 import requests
 #from TIENDA import tienda
 
+
+print("Hola")
+
+
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
 def menu_inicial():
@@ -111,6 +115,7 @@ def equipo_pokemon(numero, apodo):
   respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
   pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
   especie = requests.get(pokemon['species']['url']).json()
+
   print("\t Este es tu pokemon:")
   id = print(f"\tNo. {pokemon['id']}")
   nombre = print(f"\t{pokemon['name']}")
@@ -120,6 +125,14 @@ def equipo_pokemon(numero, apodo):
   tipo = 0
 
   input('\tPresione una tecla para continuar')
+
+  print("\tEste es tu pokemon:")
+  id = print(f"\tNo. {pokemon['id']}")
+  nombre = print(f"\ttu pokemon: {pokemon['name']}")
+  apo = print(f"\tEl nombre que le diste es {apodo}")
+  nivel = print(f"\tSu nivel es 5")
+  experiencia = 1500
+
 
 
 
