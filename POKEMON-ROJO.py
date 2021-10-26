@@ -1,10 +1,11 @@
 import os
 import requests
+from equipo import Equipo
 #from TIENDA import tienda
-
+lista_equipo = Equipo()
 
 print("Hola")
-
+ 
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
