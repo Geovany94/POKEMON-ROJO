@@ -137,11 +137,11 @@ def equipo_pokemon(numero, apodo):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
         print(f"\t{i+1}-  {traducido[4]['name']}")
-    print("\n\n")
     
     
     print('\tStats del pokemon')
     for item in pokemon['stats']:
+        print('')
         print(f"\t- {item['stat']['name']}")
         print(f"\t- {item['base_stat']} ")
 
