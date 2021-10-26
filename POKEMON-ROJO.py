@@ -1,8 +1,6 @@
 import os
 import requests
 from TIENDA import tienda
-print("Hola")
-
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -128,12 +126,10 @@ os.system('cls')
 os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
 print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
-#<<<<<<< HEAD
 print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
-#=======
 print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
 print('\n\n\t\t By Denys carreto \n')
-#>>>>>>> 3b9ee695651261ae4b77cab0671402833ddd42fd
+
 
 
 
