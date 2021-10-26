@@ -144,6 +144,8 @@ def equipo_pokemon(numero, apodo):
 
 
 
+
+
 os.system('cls')
 os.system('color F0')
 
