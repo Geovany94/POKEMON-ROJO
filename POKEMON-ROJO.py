@@ -127,7 +127,7 @@ def equipo_pokemon(numero, apodo):
     print("\t Este es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\t{pokemon['name']}")
-    apo = print(f"\t{apodo}")
+    apo = print(f"Su apodo de Pokemon es: {apodo}")
     nivel = print(f"\t 5")
     experiencia = print(f"\t1500")
     tipo = 0
@@ -146,7 +146,7 @@ def equipo_pokemon(numero, apodo):
 
 os.system('cls')
 os.system('color F0')
-<<<<<<< HEAD
+# <<<<<<< HEAD
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
 print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
 print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
