@@ -146,10 +146,14 @@ def equipo_pokemon(numero, apodo):
 
 os.system('cls')
 os.system('color F0')
-print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219')
-print('\t\t By Cesar Geovany Ambrocio Quiej   1641417')
-print('\t\t By Angel André Cotco Cuzal        1518321')
-print('\t\t By Angel André Cotco Cuzal 1641417\n')
+<<<<<<< HEAD
+print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
+print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
+print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
+print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
+print('\n\n\t\t By Denys carreto \n')
+print('\n\n\t\t By ELena \n')
+print('\n\n\t\t By ELena \n')
 
 
 
