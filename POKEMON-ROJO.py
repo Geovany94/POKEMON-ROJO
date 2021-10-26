@@ -119,7 +119,7 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-    
+    nivel = 5
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -130,7 +130,7 @@ def equipo_pokemon(numero, apodo):
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\ttu pokemon: {pokemon['name']}")
     apo = print(f"\tEl nombre que le diste es {apodo}")
-    nivel = print(f"\tSu nivel es 5")
+    nivel = print(f"\tSu nivel es {nivel}")
     experiencia = print(f"\t1500")
     print("\tTipo de Pokemon:")
     for i, tipo in enumerate(tipo_pokemon):
