@@ -1,6 +1,8 @@
 import os
 import requests
 from TIENDA import tienda
+print("Hola")
+
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
