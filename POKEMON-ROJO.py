@@ -111,15 +111,15 @@ def equipo_pokemon(numero, apodo):
   respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
   pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
   especie = requests.get(pokemon['species']['url']).json()
-  print("Este es tu pokemon:")
-  id = print(f"No. {pokemon['id']}")
-  nombre = print(f"{pokemon['name']}")
-  apo = print(f"{apodo}")
-  nivel = print(5)
-  experiencia = 1500
+  print("\t Este es tu pokemon:")
+  id = print(f"\t No. {pokemon['id']}")
+  nombre = print(f"\t {pokemon['name']}")
+  apo = print(f"\t {apodo}")
+  nivel = print(f"\t 5")
+  experiencia = print(f"\t1500")
   tipo = 0
 
-  print('Presione una tecla para continuar')
+  input('Presione una tecla para continuar')
 
 
 
