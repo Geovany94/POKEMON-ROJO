@@ -132,6 +132,12 @@ def equipo_pokemon(numero, apodo):
     experiencia = print(f"\t1500")
     tipo = 0
 
+    print('Stats del pokemon')
+    for item in pokemon['stats']:
+        print('\tStats base')
+        print(f"\t- {item['stat']['name']}")
+        print(f"\t- {item['base_stat']} ")
+
     input('\tPresione una tecla para continuar')
 
     print("\tEste es tu pokemon:")
