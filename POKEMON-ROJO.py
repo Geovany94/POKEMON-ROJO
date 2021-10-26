@@ -18,13 +18,13 @@ def menu_inicial():
     res = str(input('\t ->'))
     if res=='1':
         acceder=1
-        menu_principal(acceder)
+        menu_principal(acceder, 1)
     elif res=='2':
         acceder=4
-        menu_principal(acceder)
+        menu_principal(acceder, 4)
     elif res=='3':
         acceder=7
-        menu_principal(acceder)
+        menu_principal(acceder, 7)
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
@@ -32,7 +32,7 @@ def menu_inicial():
     
 
 
-def menu_principal(opcion):
+def menu_principal(opcion, poke):
     while True:
         os.system('color E0')
         os.system('cls')
@@ -49,7 +49,7 @@ def menu_principal(opcion):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
-            equipo_pokemon()
+            equipo_pokemon(poke, "tierno")
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
@@ -62,8 +62,7 @@ def menu_principal(opcion):
             print('\tERROR-> La opción elejida no existe.\n')
             os.system('pause')
             
-def equipo_pokemon():
-    pass
+
 def batalla_pokemon():
     dinero=0
     pocion=0
@@ -107,7 +106,7 @@ def tienda_objetos(dinero):
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
 
-def inicial(numero, apodo):
+def equipo_pokemon(numero, apodo):
   clear()
   respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
   pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -115,10 +114,12 @@ def inicial(numero, apodo):
   print("Este es tu pokemon:")
   id = print(f"No. {pokemon['id']}")
   nombre = print(f"{pokemon['name']}")
-  apo = apodo
-  nivel = 5
+  apo = print(f"{apodo}")
+  nivel = print(5)
   experiencia = 1500
   tipo = 0
+
+  print('Presione una tecla para continuar')
 
 
 
