@@ -118,12 +118,12 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-    
+
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
     especie = requests.get(pokemon['species']['url']).json()
-
+    print("\n")
     print("\t Este es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\t{pokemon['name']}")
@@ -146,7 +146,7 @@ def equipo_pokemon(numero, apodo):
 
 os.system('cls')
 os.system('color F0')
-<<<<<<< HEAD
+
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
 print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
 print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
