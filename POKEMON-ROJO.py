@@ -1,6 +1,6 @@
 import os
 import requests
-from TIENDA import tienda
+#from TIENDA import tienda
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -118,7 +118,7 @@ def inicial(numero, apodo):
   apo = apodo
   nivel = 5
   experiencia = 1500
-  tipo = pass 
+  tipo = 0
 
 
 
@@ -129,7 +129,7 @@ print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
 print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
 print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
 print('\n\n\t\t By Denys carreto \n')
-
+print('\n\n\t\t By ELena \n')
 
 
 
