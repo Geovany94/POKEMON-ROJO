@@ -126,10 +126,10 @@ def equipo_pokemon(numero, apodo):
     print("\n")
     print("\t Este es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\t{pokemon['name']}")
-    apo = print(f"Su apodo de Pokemon es: {apodo}")
-    nivel = print(f"\t 5")
-    experiencia = print(f"\t1500")
+    nombre = print(f"\ttu pokemon: {pokemon['name']}")
+    apo = print(f"\tEl nombre que le diste es {apodo}")
+    nivel = print(f"\tSu nivel es 5")
+    experiencia = print(f"\tCon experincia 1500")
     tipo = 0
 
     print('\tStats del pokemon')
@@ -140,12 +140,7 @@ def equipo_pokemon(numero, apodo):
 
     input('\tPresione una tecla para continuar')
 
-    print("\tEste es tu pokemon:")
-    id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\ttu pokemon: {pokemon['name']}")
-    apo = print(f"\tEl nombre que le diste es {apodo}")
-    nivel = print(f"\tSu nivel es 5")
-    experiencia = 1500
+
 
 
 
