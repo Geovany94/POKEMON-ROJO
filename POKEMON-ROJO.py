@@ -15,6 +15,7 @@ def menu_inicial():
     print('\n\t\tBIENVENIDO A POKEMON ROJO \n')
     print('\t Ingrese su nombre de entrenador Pokemon')
     entrenador= input('\t ')
+    
     print('\t Pokemon inicial-- Pokemons disponibles:')
     print('\t 1->Bulbasaur')
     print('\t 2->Charmander')
@@ -22,21 +23,27 @@ def menu_inicial():
     res = str(input('\t ->'))
     if res=='1':
         acceder=1
-        menu_principal(acceder, 1)
+        mote = input('\tIngrese mote para su pokemon: ')
+        menu_principal(acceder, mote)
+        
+
     elif res=='2':
         acceder=4
-        menu_principal(acceder, 4)
+        mote = input('\tIngrese mote para su pokemon: ')
+        menu_principal(acceder, mote)
     elif res=='3':
         acceder=7
-        menu_principal(acceder, 7)
+        mote = input('\tIngrese mote para su pokemon: ')
+        menu_principal(acceder, mote)
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
         menu_inicial()
     
+    
 
 
-def menu_principal(opcion, poke):
+def menu_principal(opcion, mote):
     while True:
         os.system('color E0')
         os.system('cls')
@@ -53,7 +60,7 @@ def menu_principal(opcion, poke):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
-            equipo_pokemon(poke, "tierno")
+            equipo_pokemon(opcion, mote)
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
@@ -111,27 +118,28 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-  clear()
-  respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
-  pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
-  especie = requests.get(pokemon['species']['url']).json()
+    
+    clear()
+    respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
+    pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
+    especie = requests.get(pokemon['species']['url']).json()
 
-  print("\t Este es tu pokemon:")
-  id = print(f"\tNo. {pokemon['id']}")
-  nombre = print(f"\t{pokemon['name']}")
-  apo = print(f"\t{apodo}")
-  nivel = print(f"\t 5")
-  experiencia = print(f"\t1500")
-  tipo = 0
+    print("\t Este es tu pokemon:")
+    id = print(f"\tNo. {pokemon['id']}")
+    nombre = print(f"\t{pokemon['name']}")
+    apo = print(f"\t{apodo}")
+    nivel = print(f"\t 5")
+    experiencia = print(f"\t1500")
+    tipo = 0
 
-  input('\tPresione una tecla para continuar')
+    input('\tPresione una tecla para continuar')
 
-  print("\tEste es tu pokemon:")
-  id = print(f"\tNo. {pokemon['id']}")
-  nombre = print(f"\ttu pokemon: {pokemon['name']}")
-  apo = print(f"\tEl nombre que le diste es {apodo}")
-  nivel = print(f"\tSu nivel es 5")
-  experiencia = 1500
+    print("\tEste es tu pokemon:")
+    id = print(f"\tNo. {pokemon['id']}")
+    nombre = print(f"\ttu pokemon: {pokemon['name']}")
+    apo = print(f"\tEl nombre que le diste es {apodo}")
+    nivel = print(f"\tSu nivel es 5")
+    experiencia = 1500
 
 
 
