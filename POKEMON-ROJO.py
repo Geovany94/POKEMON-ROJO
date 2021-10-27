@@ -2,10 +2,9 @@ import os
 import requests
 from equipo import Equipo
 #from TIENDA import tienda
-#lista_equipo = Equipo()
 
-print("Hola")
- 
+
+
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -119,6 +118,7 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
+    
     nivel = 5
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
@@ -130,24 +130,26 @@ def equipo_pokemon(numero, apodo):
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\ttu pokemon: {pokemon['name']}")
     apo = print(f"\tEl nombre que le diste es {apodo}")
-    nivel = print(f"\tSu nivel es {nivel}")
+    nive = print(f"\tSu nivel es {nivel}")
     experiencia = print(f"\t1500")
     print("\tTipo de Pokemon:")
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
+        tipo = (f"{traducido[4]['name']}")
         print(f"\t{i+1}-  {traducido[4]['name']}")
-    
+    mov = 0
     
     print('\tStats del pokemon')
     for item in pokemon['stats']:
         print('')
+        stats = (f"{item['base_stat']}") 
         print(f"\t- {item['stat']['name']}")
         print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
 
-
+    equipo = Equipo(id, nombre, apo, nivel, experiencia, tipo, mov, stats)
 
 
 
