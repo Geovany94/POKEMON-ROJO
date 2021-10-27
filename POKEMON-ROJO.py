@@ -3,7 +3,7 @@ import requests
 from equipo import Equipo
 #from TIENDA import tienda
 
-
+equipo = Equipo(5)
 
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
@@ -56,6 +56,7 @@ def menu_principal(opcion, mote):
         print('\t 2. Batallas con Pokemons salvajes')
         print('\t 3. Pokédex')
         print('\t 4. Tienda')
+        print('\t 5. prueba de clases')
         print('\t 0. Salir del juego')
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
@@ -85,6 +86,9 @@ def batalla_pokemon():
     masterball=0
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
     tienda_objetos(dinero)
+
+
+
 def pokedex():
     pass
 def tienda_objetos(dinero):
@@ -148,8 +152,9 @@ def equipo_pokemon(numero, apodo):
         print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
+    equipo.equipo_poke()
+    
 
-    equipo = Equipo(id, nombre, apo, nivel, experiencia, tipo, mov, stats)
 
 
 
