@@ -1,11 +1,12 @@
 import os
 import requests
 from equipo import Equipo
+from random import randint
 #from TIENDA import tienda
 lista_equipo = Equipo()
 
-print("Hola")
- 
+equipo = Equipo(5)
+
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -57,6 +58,7 @@ def menu_principal(opcion, mote):
         print('\t 2. Batallas con Pokemons salvajes')
         print('\t 3. Pokédex')
         print('\t 4. Tienda')
+        print('\t 5. prueba de clases')
         print('\t 0. Salir del juego')
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
@@ -68,6 +70,10 @@ def menu_principal(opcion, mote):
             pokedex()
         elif res=='4':
             tienda()
+
+        elif res == '5':
+            input(equipo)
+
         elif res=='0':
             break
         else:
@@ -87,7 +93,6 @@ def batalla_pokemon():
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
     tienda_objetos(dinero)
 
-    
 def pokedex():
     pass
 def tienda_objetos(dinero):
@@ -145,10 +150,38 @@ def equipo_pokemon(numero, apodo):
     print('\tStats del pokemon')
     for item in pokemon['stats']:
         print('\tStats base')
+    id = pokemon['id']
+    print(f"\tNo. {pokemon['id']}")
+    nombre = pokemon['name']
+    print(f"\ttu pokemon: {pokemon['name']}")
+    apo = apodo
+    print(f"\tEl nombre que le diste es {apodo}")
+    nivel = 5
+    print(f"\tSu nivel es {nivel}")
+    xp = 1500
+    print(f"\tXp es :{xp}")
+    print("\tTipo de Pokemon:")
+    for i, tipo in enumerate(tipo_pokemon):
+        traduccion= requests.get(tipo['type']['url']).json()
+        traducido=traduccion['names']
+        tipo = (f"{i+1}{traducido[4]['name']}")
+        print(f"\t{i+1}-  {traducido[4]['name']}")
+
+
+  
+
+    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
+    
+    print('\tStats del pokemon')
+    for item in pokemon['stats']:
+        print('')
+        nombre_stats= f"{item['stat']['name']}"
+        stats = (f"{item['base_stat']}") 
         print(f"\t- {item['stat']['name']}")
         print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
+    equipo.equipo_poke(id, nombre, apo, xp, tipo, movimientos, nombre_stats, stats)
 
     print("\tEste es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
@@ -157,10 +190,36 @@ def equipo_pokemon(numero, apodo):
     nivel = print(f"\tSu nivel es 5")
     experiencia = 1500
 
+def generar_pokemon():
+    numero = randint(0, 75)
+    
+    clear()
+    respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
+    pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
+    especie = requests.get(pokemon['species']['url']).json()
+    tipo_pokemon= pokemon['types']
+
+    id = pokemon['id']
+
+    nombre = pokemon['name']
+    nivel = 5
+    xp = 1500
+    for i, tipo in enumerate(tipo_pokemon):
+        traduccion= requests.get(tipo['type']['url']).json()
+        traducido=traduccion['names']
+        tipo = (f"{i+1}{traducido[4]['name']}")
+
+    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
+    
+    for item in pokemon['stats']:
+    
+        nombre_stats= f"{item['stat']['name']}"
+        stats = (f"{item['base_stat']}") 
 
 
-
-
+    input('\tPresione una tecla para continuar')
+    equipo.generar_poke_rival(id, nombre, xp, tipo, movimientos, nombre_stats, stats)
+    
 
 os.system('cls')
 os.system('color F0')
@@ -171,18 +230,6 @@ print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
 print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
-
-
-print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
-print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
-print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
-print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
-print('\n\n\t\t By Denys carreto \n')
-print('\n\n\t\t By ELena \n')
-print('\n\n\t\t By ELena \n')
-
-
-
 
 
 os.system('pause')
