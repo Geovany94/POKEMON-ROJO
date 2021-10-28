@@ -2,7 +2,7 @@ import os
 import requests
 from equipo import Equipo
 #from TIENDA import tienda
-#lista_equipo = Equipo()
+lista_equipo = Equipo()
 
 print("Hola")
  
@@ -86,6 +86,8 @@ def batalla_pokemon():
     masterball=0
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
     tienda_objetos(dinero)
+
+    
 def pokedex():
     pass
 def tienda_objetos(dinero):
@@ -119,7 +121,7 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-    nivel = 5
+
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -128,27 +130,32 @@ def equipo_pokemon(numero, apodo):
     print("\n")
     print("\t Este es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\ttu pokemon: {pokemon['name']}")
-    apo = print(f"\tEl nombre que le diste es {apodo}")
-    nivel = print(f"\tSu nivel es {nivel}")
+    nombre = print(f"\t{pokemon['name']}")
+    apo = print(f"Su apodo de Pokemon es: {apodo}")
+    nivel = print(f"\t 5")
     experiencia = print(f"\t1500")
-    print("\tTipo de Pokemon:")
+    print("Tipo de Pokemon:")
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
-        print(f"\t{i+1}-  {traducido[4]['name']}")
+        print(f"{i+1}-  {traducido[4]['name']}")
+    print("\n\n")
     
     
     print('\tStats del pokemon')
     for item in pokemon['stats']:
-        print('')
+        print('\tStats base')
         print(f"\t- {item['stat']['name']}")
         print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
 
-
-
+    print("\tEste es tu pokemon:")
+    id = print(f"\tNo. {pokemon['id']}")
+    nombre = print(f"\ttu pokemon: {pokemon['name']}")
+    apo = print(f"\tEl nombre que le diste es {apodo}")
+    nivel = print(f"\tSu nivel es 5")
+    experiencia = 1500
 
 
 
@@ -164,6 +171,15 @@ print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
 print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
+
+
+print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ   1590219\n')
+print('\n\n\t\t By Cesar Geovany Ambrocio Quiej   1641417\n')
+print('\n\n\t\t By Angel André Cotco Cuzal        1518321\n')
+print('\n\n\t\t By Angel André Cotco Cuzal 1641417\n')
+print('\n\n\t\t By Denys carreto \n')
+print('\n\n\t\t By ELena \n')
+print('\n\n\t\t By ELena \n')
 
 
 
