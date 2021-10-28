@@ -134,7 +134,7 @@ def equipo_pokemon(numero, apodo):
     tipo_pokemon= pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
-<<<<<<< Updated upstream
+#<<<<<<< Updated upstream
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\t{pokemon['name']}")
     apo = print(f"Su apodo de Pokemon es: {apodo}")
@@ -157,14 +157,15 @@ def equipo_pokemon(numero, apodo):
     print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
     print(f"\tEl nombre que le diste es {apodo}")
-=======
+
+#======
     
     id = print(f"\tNo. {pokemon['id']}")
     
     nombre = print(f"\ttu pokemon: {pokemon['name']}")
     
     apo = print(f"\tEl nombre que le diste es {apodo}")
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
     nivel = 5
     print(f"\tSu nivel es {nivel}")
     xp = 1500
