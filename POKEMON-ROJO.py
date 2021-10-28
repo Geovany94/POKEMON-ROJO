@@ -134,6 +134,7 @@ def equipo_pokemon(numero, apodo):
     tipo_pokemon= pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
+<<<<<<< Updated upstream
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\t{pokemon['name']}")
     apo = print(f"Su apodo de Pokemon es: {apodo}")
@@ -156,6 +157,14 @@ def equipo_pokemon(numero, apodo):
     print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
     print(f"\tEl nombre que le diste es {apodo}")
+=======
+    
+    id = print(f"\tNo. {pokemon['id']}")
+    
+    nombre = print(f"\ttu pokemon: {pokemon['name']}")
+    
+    apo = print(f"\tEl nombre que le diste es {apodo}")
+>>>>>>> Stashed changes
     nivel = 5
     print(f"\tSu nivel es {nivel}")
     xp = 1500
@@ -164,8 +173,7 @@ def equipo_pokemon(numero, apodo):
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
-        tipo = (f"{i+1}{traducido[4]['name']}")
-        print(f"\t{i+1}-  {traducido[4]['name']}")
+        tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
 
 
   
@@ -175,13 +183,11 @@ def equipo_pokemon(numero, apodo):
     print('\tStats del pokemon')
     for item in pokemon['stats']:
         print('')
-        nombre_stats= f"{item['stat']['name']}"
-        stats = (f"{item['base_stat']}") 
         print(f"\t- {item['stat']['name']}")
-        print(f"\t- {item['base_stat']} ")
+        stats = print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
-    equipo.equipo_poke(id, nombre, apo, xp, tipo, movimientos, nombre_stats, stats)
+    equipo.equipo_poke(id, nombre, apo, xp, tipo, movimientos, stats)
 
     print("\tEste es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
