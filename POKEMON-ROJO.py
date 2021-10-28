@@ -1,6 +1,7 @@
 import os
 import requests
 from equipo import Equipo
+from random import randint
 #from TIENDA import tienda
 
 equipo = Equipo(5)
@@ -68,6 +69,10 @@ def menu_principal(opcion, mote):
             pokedex()
         elif res=='4':
             tienda()
+
+        elif res == '5':
+            input(equipo)
+
         elif res=='0':
             break
         else:
@@ -122,8 +127,7 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-    
-    nivel = 5
+
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -131,28 +135,68 @@ def equipo_pokemon(numero, apodo):
     tipo_pokemon= pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
-    id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\ttu pokemon: {pokemon['name']}")
-    apo = print(f"\tEl nombre que le diste es {apodo}")
-    nive = print(f"\tSu nivel es {nivel}")
-    experiencia = print(f"\t1500")
+    id = pokemon['id']
+    print(f"\tNo. {pokemon['id']}")
+    nombre = pokemon['name']
+    print(f"\ttu pokemon: {pokemon['name']}")
+    apo = apodo
+    print(f"\tEl nombre que le diste es {apodo}")
+    nivel = 5
+    print(f"\tSu nivel es {nivel}")
+    xp = 1500
+    print(f"\tXp es :{xp}")
     print("\tTipo de Pokemon:")
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
-        tipo = (f"{traducido[4]['name']}")
+        tipo = (f"{i+1}{traducido[4]['name']}")
         print(f"\t{i+1}-  {traducido[4]['name']}")
-    mov = 0
+
+
+  
+
+    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
     
     print('\tStats del pokemon')
     for item in pokemon['stats']:
         print('')
+        nombre_stats= f"{item['stat']['name']}"
         stats = (f"{item['base_stat']}") 
         print(f"\t- {item['stat']['name']}")
         print(f"\t- {item['base_stat']} ")
 
     input('\tPresione una tecla para continuar')
-    equipo.equipo_poke()
+    equipo.equipo_poke(id, nombre, apo, xp, tipo, movimientos, nombre_stats, stats)
+
+def generar_pokemon():
+    numero = randint(0, 75)
+    
+    clear()
+    respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
+    pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
+    especie = requests.get(pokemon['species']['url']).json()
+    tipo_pokemon= pokemon['types']
+
+    id = pokemon['id']
+
+    nombre = pokemon['name']
+    nivel = 5
+    xp = 1500
+    for i, tipo in enumerate(tipo_pokemon):
+        traduccion= requests.get(tipo['type']['url']).json()
+        traducido=traduccion['names']
+        tipo = (f"{i+1}{traducido[4]['name']}")
+
+    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
+    
+    for item in pokemon['stats']:
+    
+        nombre_stats= f"{item['stat']['name']}"
+        stats = (f"{item['base_stat']}") 
+
+
+    input('\tPresione una tecla para continuar')
+    equipo.generar_poke_rival(id, nombre, xp, tipo, movimientos, nombre_stats, stats)
     
 
 
