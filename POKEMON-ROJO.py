@@ -68,7 +68,9 @@ def menu_principal(opcion, mote):
             tienda()
 
         elif res == '5':
-            input(equipo)
+            print('Clase equipo')
+            print(equipo)
+            input('pause...')
 
         elif res=='0':
             break
@@ -157,25 +159,31 @@ def equipo_pokemon(numero, apodo):
     xp = 1500
     print(f"\tXp es :{xp}")
     print("\tTipo de Pokemon:")
+    tipos = []
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
         tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+        #tipos.append(tipo)
 
     # Movimientos Muestra todo, tiene que ser solo cuatro
     print("\tMovimientos de Pokemon:")
     movi_pokemon = pokemon['moves']
-    for i, tipo in enumerate(movi_pokemon):
+    movimi =[]
+    for i, movimientos in enumerate(movi_pokemon):
         movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
+        movimi.append(movimientos)
 
     print('\tStats del pokemon')
+    statss = []
     for item in pokemon['stats']:
         print('')
         print(f"\t- {item['stat']['name']}")
         stats = print(f"\t- {item['base_stat']} ")
+        statss.append(stats)
 
     input('\tPresione una tecla para continuar')
-    equipo.equipo_poke(id, nombre, apo, xp, tipo, movimientos, stats)
+    equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
 
     print("\tEste es tu pokemon:")
     id = print(f"\tNo. {pokemon['id']}")
@@ -223,7 +231,7 @@ os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
-print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
+print('\t\t By Dennys Rolando Yosimar Carreto Aguilon    2276616\n')
 
 
 os.system('pause')
