@@ -10,7 +10,6 @@ class Equipo:
         self.tipo = tipo
         self.movimientos = movimientos
         #Datos de combate
-
         self.stat = stat
 
     def ver_pokemon(self):

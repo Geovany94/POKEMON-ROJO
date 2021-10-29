@@ -3,7 +3,6 @@ import requests
 from equipo import Equipo
 from random import randint
 #from TIENDA import tienda
-lista_equipo = Equipo()
 
 equipo = Equipo(5)
 
@@ -95,6 +94,7 @@ def batalla_pokemon():
 
 def pokedex():
     pass
+
 def tienda_objetos(dinero):
     os.system('cls')
     valor=dinero
@@ -131,7 +131,7 @@ def equipo_pokemon(numero, apodo):
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
     especie = requests.get(pokemon['species']['url']).json()
-    tipo_pokemon= pokemon['types']
+    tipo_pokemon = pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
 #<<<<<<< Updated upstream
@@ -157,15 +157,6 @@ def equipo_pokemon(numero, apodo):
     print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
     print(f"\tEl nombre que le diste es {apodo}")
-
-#======
-    
-    id = print(f"\tNo. {pokemon['id']}")
-    
-    nombre = print(f"\ttu pokemon: {pokemon['name']}")
-    
-    apo = print(f"\tEl nombre que le diste es {apodo}")
-#>>>>>>> Stashed changes
     nivel = 5
     print(f"\tSu nivel es {nivel}")
     xp = 1500
