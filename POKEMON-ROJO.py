@@ -41,9 +41,6 @@ def menu_inicial():
         os.system('pause')
         menu_inicial()
     
-    
-
-
 def menu_principal(opcion, mote):
     while True:
         os.system('color E0')
@@ -79,7 +76,6 @@ def menu_principal(opcion, mote):
             print('\tERROR-> La opción elejida no existe.\n')
             os.system('pause')
             
-
 def batalla_pokemon():
     dinero=0
     pocion=0
@@ -126,7 +122,6 @@ def tienda_objetos(dinero):
         os.system('pause')
 
 def equipo_pokemon(numero, apodo):
-
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -134,7 +129,6 @@ def equipo_pokemon(numero, apodo):
     tipo_pokemon = pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
-#<<<<<<< Updated upstream
     id = print(f"\tNo. {pokemon['id']}")
     nombre = print(f"\t{pokemon['name']}")
     apo = print(f"Su apodo de Pokemon es: {apodo}")
@@ -150,7 +144,8 @@ def equipo_pokemon(numero, apodo):
     
     print('\tStats del pokemon')
     for item in pokemon['stats']:
-        print('\tStats base')
+        print(f"\t- {item['base_stat']}")
+
     id = pokemon['id']
     print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
@@ -167,11 +162,12 @@ def equipo_pokemon(numero, apodo):
         traducido=traduccion['names']
         tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
 
+    # Movimientos Muestra todo, tiene que ser solo cuatro
+    print("\tMovimientos de Pokemon:")
+    movi_pokemon = pokemon['moves']
+    for i, tipo in enumerate(movi_pokemon):
+        movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
 
-  
-
-    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
-    
     print('\tStats del pokemon')
     for item in pokemon['stats']:
         print('')
