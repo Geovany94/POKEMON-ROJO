@@ -6,7 +6,7 @@ class Equipo:
         self.apodo = ""
         self.xp = 1500
         self.tipo = ""
-        self.movimientos = ""
+        self.movimientos = []
         #Datos de combate
         self.stat = ""
 
