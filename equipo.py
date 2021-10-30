@@ -1,6 +1,14 @@
 class Equipo:
     def __init__(self, nivel):
         self.nivel = nivel
+        self.id = 5
+        self.nombre = ""
+        self.apodo = ""
+        self.xp = 1500
+        self.tipo = ""
+        self.movimientos = ""
+        #Datos de combate
+        self.stat = ""
 
     def equipo_poke(self, id, nombre, apodo, xp, tipo, movimientos ,stat):
         self.id = id
@@ -36,5 +44,5 @@ class Equipo:
 
 
     def __str__(self) -> str:
-        return f"\n El nombre es: {self.id}\n nombre: {self.nombre}\n el apodo es: {self.apodo}\n su nivel: {self.nivel}\n Su experiencia es: {self.xp}\n El tipo es: {self.tipo}\n sus movimientos son: {self.movimientos} "
+        return f"\n La id es: {self.id}\n nombre: {self.nombre}\n el apodo es: {self.apodo}\n su nivel: {self.nivel}\n Su experiencia es: {self.xp}\n El tipo es: {self.tipo}\n sus movimientos son: {self.movimientos} "
     

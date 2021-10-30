@@ -192,6 +192,9 @@ def equipo_pokemon(numero, apodo):
     nivel = print(f"\tSu nivel es 5")
     experiencia = 1500
 
+ 
+
+
 def generar_pokemon():
     numero = randint(0, 75)
     
