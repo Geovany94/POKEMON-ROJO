@@ -8,7 +8,7 @@ class Equipo:
         self.tipo = ""
         self.movimientos = []
         #Datos de combate
-        self.stat = ""
+        self.stat = []
 
     def equipo_poke(self, id, nombre, apodo, xp, tipo, movimientos ,stat):
         self.id = id
