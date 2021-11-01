@@ -169,10 +169,12 @@ def equipo_pokemon(numero, apodo):
     # Movimientos Muestra todo, tiene que ser solo cuatro
     print("\tMovimientos de Pokemon:")
     movi_pokemon = pokemon['moves']
-    movimi =[]
+
+    movimi = []
     for i, movimientos in enumerate(movi_pokemon):
         movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
         movimi.append(movimientos)
+     
 
     print('\tStats del pokemon')
     statss = []
@@ -184,13 +186,6 @@ def equipo_pokemon(numero, apodo):
 
     input('\tPresione una tecla para continuar')
     equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
-
-    print("\tEste es tu pokemon:")
-    id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\ttu pokemon: {pokemon['name']}")
-    apo = print(f"\tEl nombre que le diste es {apodo}")
-    nivel = print(f"\tSu nivel es 5")
-    experiencia = 1500
 
  
 
