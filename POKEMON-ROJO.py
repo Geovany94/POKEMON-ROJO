@@ -58,6 +58,9 @@ def menu_principal(opcion, mote):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
+            clear()
+            print('\n\t\tBienvenido a tu equipo pokemon')
+            print(f"1. {equipo.apodo}")
             equipo_pokemon(opcion, mote)
             print(equipo)
             input('pause...')
@@ -154,7 +157,7 @@ def equipo_pokemon(numero, apodo):
     for d in range(4):
         
         for i, movimientos in enumerate(movi_pokemon):
-            
+
             a = randint(0,62)
             mov = movi_pokemon[a]['move']['name']
             #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
