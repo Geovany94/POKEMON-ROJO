@@ -154,6 +154,7 @@ def equipo_pokemon(numero, apodo):
     for d in range(4):
         
         for i, movimientos in enumerate(movi_pokemon):
+            
             a = randint(0,62)
             mov = movi_pokemon[a]['move']['name']
             #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
