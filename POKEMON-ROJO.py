@@ -54,24 +54,21 @@ def menu_principal(opcion, mote):
         print('\t 2. Batallas con Pokemons salvajes')
         print('\t 3. Pokédex')
         print('\t 4. Tienda')
-        print('\t 5. prueba de clases')
         print('\t 0. Salir del juego')
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
             equipo_pokemon(opcion, mote)
+            print(equipo)
+            input('pause...')
+
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
             pokedex()
         elif res=='4':
             tienda()
-
-        elif res == '5':
-            print('Clase equipo')
-            print(equipo)
-            input('pause...')
-
+                        
         elif res=='0':
             break
         else:
@@ -129,44 +126,49 @@ def equipo_pokemon(numero, apodo):
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
     especie = requests.get(pokemon['species']['url']).json()
     tipo_pokemon = pokemon['types']
-    print("\n")
-    print("\t Este es tu pokemon:")
+    #print("\n")
+    #print("\t Este es tu pokemon:")
     id = pokemon['id']
-    print(f"\tNo. {pokemon['id']}")
+    #print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
-    print(f"\ttu pokemon: {pokemon['name']}")
+    #print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
-    print(f"\tEl nombre que le diste es: {apodo}")
-    nivel = 5
-    print(f"\tSu nivel es: {nivel}")
+    #print(f"\tEl nombre que le diste es: {apodo}")
+    #nivel = 5
+    #print(f"\tSu nivel es: {nivel}")
     xp = 1500
-    print(f"\tXp es :{xp}")
-    print("\tTipo de Pokemon:")
+    #print(f"\tXp es :{xp}")
+    #print("\tTipo de Pokemon:")
     tipos = []
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
-        tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
-        tipos.append(tipo)
+        tip = traducido[4]['name']
+        #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+        tipos.append(tip)
 
     # Movimientos Muestra todo, tiene que ser solo cuatro
-    print("\tMovimientos de Pokemon:")
     movi_pokemon = pokemon['moves']
 
     movimi = []
-    for i, movimientos in enumerate(movi_pokemon):
-        movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
-        movimi.append(movimientos)
+    for d in range(4):
+        
+        for i, movimientos in enumerate(movi_pokemon):
+            a = randint(0,62)
+            mov = movi_pokemon[a]['move']['name']
+            #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
+        movimi.append(mov)
+    #print(f"\tSus movimientos son {movimi}")
 
-
-    print('\tStats del pokemon')
+    #print('\tStats del pokemon')
     statss = []
     for item in pokemon['stats']:
-        print(f"\t- {item['stat']['name']}")
-        stats = print(f"\t- {item['base_stat']} ")
-        statss.append(stats)
+        item['stat']['name']
+        #stats = print(f"\t- {item['base_stat']} ")
+        stat = item['base_stat']
+        statss.append(stat)
 
-    input('\tPresione una tecla para continuar')
+    #input('\tPresione una tecla para continuar')
     equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
 
  
