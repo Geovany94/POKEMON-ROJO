@@ -131,31 +131,14 @@ def equipo_pokemon(numero, apodo):
     tipo_pokemon = pokemon['types']
     print("\n")
     print("\t Este es tu pokemon:")
-    id = print(f"\tNo. {pokemon['id']}")
-    nombre = print(f"\t{pokemon['name']}")
-    apo = print(f"Su apodo de Pokemon es: {apodo}")
-    nivel = print(f"\t 5")
-    experiencia = print(f"\t1500")
-    print("Tipo de Pokemon:")
-    for i, tipo in enumerate(tipo_pokemon):
-        traduccion= requests.get(tipo['type']['url']).json()
-        traducido=traduccion['names']
-        print(f"{i+1}-  {traducido[4]['name']}")
-    print("\n\n")
-    
-    
-    print('\tStats del pokemon')
-    for item in pokemon['stats']:
-        print(f"\t- {item['base_stat']}")
-
     id = pokemon['id']
     print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
     print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
-    print(f"\tEl nombre que le diste es {apodo}")
+    print(f"\tEl nombre que le diste es: {apodo}")
     nivel = 5
-    print(f"\tSu nivel es {nivel}")
+    print(f"\tSu nivel es: {nivel}")
     xp = 1500
     print(f"\tXp es :{xp}")
     print("\tTipo de Pokemon:")
@@ -164,7 +147,7 @@ def equipo_pokemon(numero, apodo):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
         tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
-        #tipos.append(tipo)
+        tipos.append(tipo)
 
     # Movimientos Muestra todo, tiene que ser solo cuatro
     print("\tMovimientos de Pokemon:")
@@ -174,12 +157,11 @@ def equipo_pokemon(numero, apodo):
     for i, movimientos in enumerate(movi_pokemon):
         movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
         movimi.append(movimientos)
-     
+
 
     print('\tStats del pokemon')
     statss = []
     for item in pokemon['stats']:
-        print('')
         print(f"\t- {item['stat']['name']}")
         stats = print(f"\t- {item['base_stat']} ")
         statss.append(stats)
