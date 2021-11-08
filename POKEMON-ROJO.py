@@ -2,12 +2,10 @@ import os
 import requests
 from equipo import Equipo
 from random import randint
-from tienda import Tienda
 #from TIENDA import tienda
 
 equipo = Equipo(5)
-dinero = 500000
-tienda = Tienda(dinero)
+
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -56,51 +54,24 @@ def menu_principal(opcion, mote):
         print('\t 2. Batallas con Pokemons salvajes')
         print('\t 3. Pokédex')
         print('\t 4. Tienda')
-        print('\t 5. prueba de clases')
         print('\t 0. Salir del juego')
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
+            clear()
+            print('\n\t\tBienvenido a tu equipo pokemon')
+            print(f"1. {equipo.apodo}")
             equipo_pokemon(opcion, mote)
+            print(equipo)
+            input('pause...')
+
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
             pokedex()
         elif res=='4':
-            os.system('cls')
-            print('\n\t\tTIENDA POKEMON \n')
-            print('\t 1-> Comprar objetos curativos')
-            print('\t 2-> Comprar PokéBall')
-            res = str(input('\t Eliga-> '))
-            if res=='1':
-                print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
-                print('\t-----------------------------------------------_')
-                print('\t 1 Poción           |20                |300')
-                print('\t 2 Superpoción      |50                |700')
-                print('\t 3 Hiperpoción      |200               |1200')
-                print('\t 4 Restaurar todo   |Vida completa     |3000')
-                opcion= int(input('\t->	'))
-                tienda.obj_curativos(opcion)
-                os.system('pause')
-            elif res=='2':
-                print('\t   NOMBRE           |PROPORCION DE    |VALOR')
-                print('\t                    |CAPTURA          |')
-                print('\t -------------------------------------------------')
-                print('\t 1 Pokéball         |1                |200')
-                print('\t 2 Superball        |1.5              |600')
-                print('\t 3 Ultraball        |2                |1200')
-                print('\t 4 Masterball       |255              |100000')
-                opcion= int(input('\t->	'))
-                tienda.pokeballs(opcion)
-                os.system('pause')
-            else:
-                print('\tERROR-> La opción elejida no existe.\n')
-                os.system('pause')
-        elif res == '5':
-            print('Clase equipo')
-            print(equipo)
-            input('pause...')
-
+            tienda()
+                        
         elif res=='0':
             break
         else:
@@ -117,9 +88,40 @@ def batalla_pokemon():
     ultraball=0
     masterball=0
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
+    tienda_objetos(dinero)
 
 def pokedex():
     pass
+
+def tienda_objetos(dinero):
+    os.system('cls')
+    valor=dinero
+    print('\n\t\tTIENDA POKEMON \n')
+    print('\t 1-> Comprar objetos curativos')
+    print('\t 2-> Comprar Poké Ball')
+    res = str(input('\t ->'))
+    if res=='1':
+        print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
+        print('\t-----------------------------------------------_')
+        print('\t 1 Poción           |20                |300')
+        print('\t 2 Superpoción      |50                |700')
+        print('\t 3 Hiperpoción      |200               |1200')
+        print('\t 4 Restaurar todo   |Vida completa     |3000')
+        opcion= int(input('\t->	'))
+        os.system('pause')
+    elif res=='2':
+        print('\t   NOMBRE           |PROPORCION DE    |VALOR')
+        print('\t                    |CAPTURA          |')
+        print('\t -------------------------------------------------')
+        print('\t 1 Pokéball         |1                |200')
+        print('\t 2 Superball        |1.5              |600')
+        print('\t 3 Ultraball        |2                |1200')
+        print('\t 4 Masterball       |255              |100000')
+        opcion= int(input('\t->	'))
+        os.system('pause')
+    else:
+        print('\tERROR-> La opción elejida no existe.\n')
+        os.system('pause')
 
 def equipo_pokemon(numero, apodo):
     clear()
@@ -127,44 +129,50 @@ def equipo_pokemon(numero, apodo):
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
     especie = requests.get(pokemon['species']['url']).json()
     tipo_pokemon = pokemon['types']
-    print("\n")
-    print("\t Este es tu pokemon:")
+    #print("\n")
+    #print("\t Este es tu pokemon:")
     id = pokemon['id']
-    print(f"\tNo. {pokemon['id']}")
+    #print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
-    print(f"\ttu pokemon: {pokemon['name']}")
+    #print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
-    print(f"\tEl nombre que le diste es: {apodo}")
-    nivel = 5
-    print(f"\tSu nivel es: {nivel}")
+    #print(f"\tEl nombre que le diste es: {apodo}")
+    #nivel = 5
+    #print(f"\tSu nivel es: {nivel}")
     xp = 1500
-    print(f"\tXp es :{xp}")
-    print("\tTipo de Pokemon:")
+    #print(f"\tXp es :{xp}")
+    #print("\tTipo de Pokemon:")
     tipos = []
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
-        tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
-        tipos.append(tipo)
+        tip = traducido[4]['name']
+        #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+        tipos.append(tip)
 
     # Movimientos Muestra todo, tiene que ser solo cuatro
-    print("\tMovimientos de Pokemon:")
     movi_pokemon = pokemon['moves']
 
     movimi = []
-    for i, movimientos in enumerate(movi_pokemon):
-        movimientos = print(f"\t{i+1} - {movi_pokemon[i]['move']['name']}")
-        movimi.append(movimientos)
+    for d in range(4):
+        
+        for i, movimientos in enumerate(movi_pokemon):
 
+            a = randint(0,62)
+            mov = movi_pokemon[a]['move']['name']
+            #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
+        movimi.append(mov)
+    #print(f"\tSus movimientos son {movimi}")
 
-    print('\tStats del pokemon')
+    #print('\tStats del pokemon')
     statss = []
     for item in pokemon['stats']:
-        print(f"\t- {item['stat']['name']}")
-        stats = print(f"\t- {item['base_stat']} ")
-        statss.append(stats)
+        item['stat']['name']
+        #stats = print(f"\t- {item['base_stat']} ")
+        stat = item['base_stat']
+        statss.append(stat)
 
-    input('\tPresione una tecla para continuar')
+    #input('\tPresione una tecla para continuar')
     equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
 
  

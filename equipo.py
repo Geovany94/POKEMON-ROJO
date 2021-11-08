@@ -44,5 +44,5 @@ class Equipo:
 
 
     def __str__(self) -> str:
-        return f"\n La id es: {self.id}\n nombre: {self.nombre}\n el apodo es: {self.apodo}\n su nivel: {self.nivel}\n Su experiencia es: {self.xp}\n El tipo es: {self.tipo}\n sus movimientos son: {self.movimientos} "
+        return f"\n La id es: {self.id}\n nombre: {self.nombre}\n el apodo es: {self.apodo}\n su nivel: {self.nivel}\n Su experiencia es: {self.xp}\n El tipo es: {self.tipo}\n sus movimientos son: {self.movimientos}\n y sus stats son {self.stat}"
     
