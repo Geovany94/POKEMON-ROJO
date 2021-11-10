@@ -27,47 +27,37 @@ def menu_inicial():
     if res=='1':
         acceder=1
         mote = input('\tIngrese mote para su pokemon: ')
-<<<<<<< Updated upstream
-        equipo_pokemon(acceder, mote)
-        menu_principal(acceder, mote)
 
-
-    elif res=='2':
-        acceder=4
-        mote = input('\tIngrese mote para su pokemon: ')
-        equipo_pokemon(acceder, mote)
-        menu_principal(acceder, mote)
-
-    elif res=='3':
-        acceder=7
-        mote = input('\tIngrese mote para su pokemon: ')
-        equipo_pokemon(acceder, mote)
-        menu_principal(acceder, mote)
- 
-=======
-        menu_principal(acceder, mote,entrenador)
-    elif res=='2':
-        acceder=4
-        mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote, entrenador)
+        
         menu_principal(acceder, mote, entrenador)
+
+
+    elif res=='2':
+        acceder=4
+        mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote, entrenador)
+        menu_principal(acceder, mote, entrenador)
+        
     elif res=='3':
         acceder=7
         mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote, entrenador)
         menu_principal(acceder, mote,entrenador)
->>>>>>> Stashed changes
+
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
         menu_inicial()
     
-<<<<<<< Updated upstream
-def menu_principal(opcion, mote):
-=======
+
+
+
     
 
 
 def menu_principal(opcion, mote,entrenador):
->>>>>>> Stashed changes
+
     while True:
         os.system('color E0')
         os.system('cls')
@@ -86,7 +76,7 @@ def menu_principal(opcion, mote,entrenador):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
-<<<<<<< Updated upstream
+
             
             clear()
             #print('\n\t\tBienvenido a tu equipo pokemon')
@@ -99,20 +89,20 @@ def menu_principal(opcion, mote,entrenador):
             print(n)
             input('pause...')
             
-=======
-            equipo_pokemon(opcion, mote,entrenador)
->>>>>>> Stashed changes
+
+            
+
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
             pokedex()
         elif res=='4':
-<<<<<<< Updated upstream
+
             tienda()
                         
-=======
+
             pass
->>>>>>> Stashed changes
+
         elif res=='0':
             break
         else:
@@ -128,13 +118,13 @@ def batalla_pokemon():
     superball=0
     ultraball=0
     masterball=0
-<<<<<<< Updated upstream
+
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
     tienda_objetos(dinero)
 
-=======
+
     tienda_objetos(dinero,pocion)
->>>>>>> Stashed changes
+
 def pokedex():
     pass
 
@@ -168,25 +158,16 @@ def tienda_objetos(dinero):
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
 
-<<<<<<< Updated upstream
-def equipo_pokemon(numero, apodo):
-=======
+
+
 
 
 def equipo_pokemon(numero, apodo, entrenador):
     
-    while True:
-        print('\n\t\tINFORMACION EQUIPO POKEMON')   
-        print('_________________________________________________________')
-        print('\t 1. Datos Pokemons')
-        print('\t 2. Datos de combate')
-        print('\t 0. Salir')
-        opc=str(input('\t'))
+    
 
-        if opc=='1':
-            pass
     nivel = 5
->>>>>>> Stashed changes
+
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -196,49 +177,49 @@ def equipo_pokemon(numero, apodo, entrenador):
     #print("\n")
     #print("\t Este es tu pokemon:")
     id = pokemon['id']
-    #print(f"\tNo. {pokemon['id']}")
+        #print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
-    #print(f"\ttu pokemon: {pokemon['name']}")
+        #print(f"\ttu pokemon: {pokemon['name']}")
     apo = apodo
-    #print(f"\tEl nombre que le diste es: {apodo}")
-    #nivel = 5
-    #print(f"\tSu nivel es: {nivel}")
+        #print(f"\tEl nombre que le diste es: {apodo}")
+        #nivel = 5
+        #print(f"\tSu nivel es: {nivel}")
     xp = pokemon['base_experience']
-    #print(f"\tXp es :{xp}")
-    #print("\tTipo de Pokemon:")
+        #print(f"\tXp es :{xp}")
+        #print("\tTipo de Pokemon:")
     tipos = []
     for i, tipo in enumerate(tipo_pokemon):
         traduccion= requests.get(tipo['type']['url']).json()
         traducido=traduccion['names']
         tip = traducido[4]['name']
-        #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+            #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
         tipos.append(tip)
 
-    # Movimientos Muestra todo, tiene que ser solo cuatro
+        # Movimientos Muestra todo, tiene que ser solo cuatro
     movi_pokemon = pokemon['moves']
 
     movimi = []
     for d in range(4):
-        
-        for i, movimientos in enumerate(movi_pokemon):
             
+        for i, movimientos in enumerate(movi_pokemon):
+                
             a = randint(0,65)
             mov = movi_pokemon[a]['move']['name']
             #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
         movimi.append(mov)
-    #print(f"\tSus movimientos son {movimi}")
+        #print(f"\tSus movimientos son {movimi}")
 
-    #print('\tStats del pokemon')
+        #print('\tStats del pokemon')
     statss = []
-    
+        
     for item in pokemon['stats']:
         item['stat']['name']
-            #stats = print(f"\t- {item['base_stat']} ")
+                #stats = print(f"\t- {item['base_stat']} ")
         stat = item['base_stat']
         statss.append(stat)
 
-    #input('\tPresione una tecla para continuar')
-    #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
+        #input('\tPresione una tecla para continuar')
+        #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
     mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
  
 
@@ -283,12 +264,11 @@ os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
-<<<<<<< Updated upstream
-print('\t\t By Dennys Rolando Yosimar Carreto Aguilon    2276616\n')
-=======
-print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
 
->>>>>>> Stashed changes
+print('\t\t By Dennys Rolando Yosimar Carreto Aguilon    2276616\n')
+
+
+
 
 
 os.system('pause')
