@@ -1,0 +1,28 @@
+            tipos_pokesal=[]
+            tipos_poke=[]
+            movimientos_oficiales= requests.get(f"https://pokeapi.co/api/v2/generation/{opcion}/").json()
+            #EXTRAR INFORMACION DE LA POKEAPI
+            pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
+            tipo_pokemon= pokemon['types']
+            #PARA ENCONTRAR LOS TIPOS DE POKEMON QUE ES EJEMPLO PICACHU = ELECTRICO
+            for i, tipo in enumerate(tipo_pokemon):
+                traduccion= requests.get(tipo['type']['url']).json()
+                traducido=traduccion['names']
+                tipo = traducido[4]['name']
+                tipos_poke.append(tipo)
+            pokemon_inicial= Pokemon(pokemon['name'], tipos_poke)
+
+            #ELECCION E INFORMACION DE POKEMON SALVAJE
+            poke_sal=[]
+            opcion2=randint(1,898)
+            pokemon_sal= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion2}/").json()
+            tipo_pokemon_sal= pokemon_sal['types']
+            for i, tipo in enumerate(tipo_pokemon_sal):
+                traduccion2= requests.get(tipo['type']['url']).json()
+                traducido2=traduccion2['names']
+                tipo2 = traducido2[4]['name']
+                poke_sal.append(tipo2)
+            pokemon_salvaje= Pokemon(pokemon_sal['name'],poke_sal)
+
+            pokemon_inicial.batalla(pokemon_salvaje)
+            os.system('pause')

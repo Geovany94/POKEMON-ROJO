@@ -27,6 +27,7 @@ def menu_inicial():
     if res=='1':
         acceder=1
         mote = input('\tIngrese mote para su pokemon: ')
+<<<<<<< Updated upstream
         equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote)
 
@@ -43,12 +44,30 @@ def menu_inicial():
         equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote)
  
+=======
+        menu_principal(acceder, mote,entrenador)
+    elif res=='2':
+        acceder=4
+        mote = input('\tIngrese mote para su pokemon: ')
+        menu_principal(acceder, mote, entrenador)
+    elif res=='3':
+        acceder=7
+        mote = input('\tIngrese mote para su pokemon: ')
+        menu_principal(acceder, mote,entrenador)
+>>>>>>> Stashed changes
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
         menu_inicial()
     
+<<<<<<< Updated upstream
 def menu_principal(opcion, mote):
+=======
+    
+
+
+def menu_principal(opcion, mote,entrenador):
+>>>>>>> Stashed changes
     while True:
         os.system('color E0')
         os.system('cls')
@@ -67,6 +86,7 @@ def menu_principal(opcion, mote):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
+<<<<<<< Updated upstream
             
             clear()
             #print('\n\t\tBienvenido a tu equipo pokemon')
@@ -79,13 +99,20 @@ def menu_principal(opcion, mote):
             print(n)
             input('pause...')
             
+=======
+            equipo_pokemon(opcion, mote,entrenador)
+>>>>>>> Stashed changes
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
             pokedex()
         elif res=='4':
+<<<<<<< Updated upstream
             tienda()
                         
+=======
+            pass
+>>>>>>> Stashed changes
         elif res=='0':
             break
         else:
@@ -101,9 +128,13 @@ def batalla_pokemon():
     superball=0
     ultraball=0
     masterball=0
+<<<<<<< Updated upstream
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
     tienda_objetos(dinero)
 
+=======
+    tienda_objetos(dinero,pocion)
+>>>>>>> Stashed changes
 def pokedex():
     pass
 
@@ -137,7 +168,25 @@ def tienda_objetos(dinero):
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
 
+<<<<<<< Updated upstream
 def equipo_pokemon(numero, apodo):
+=======
+
+
+def equipo_pokemon(numero, apodo, entrenador):
+    
+    while True:
+        print('\n\t\tINFORMACION EQUIPO POKEMON')   
+        print('_________________________________________________________')
+        print('\t 1. Datos Pokemons')
+        print('\t 2. Datos de combate')
+        print('\t 0. Salir')
+        opc=str(input('\t'))
+
+        if opc=='1':
+            pass
+    nivel = 5
+>>>>>>> Stashed changes
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -225,6 +274,7 @@ def generar_pokemon():
     equipo.generar_poke_rival(id, nombre, xp, tipo, movimientos, nombre_stats, stats)
     
 
+
 os.system('cls')
 os.system('color F0')
 
@@ -233,7 +283,12 @@ os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
+<<<<<<< Updated upstream
 print('\t\t By Dennys Rolando Yosimar Carreto Aguilon    2276616\n')
+=======
+print('\t\t By Denys Rolando Yosimar Carreto Aguilon    2276616\n')
+
+>>>>>>> Stashed changes
 
 
 os.system('pause')
