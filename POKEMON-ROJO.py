@@ -100,6 +100,17 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='3':
             pokedex()
         elif res=='4':
+<<<<<<< Updated upstream
+=======
+
+
+
+
+            tienda()
+                        
+
+
+>>>>>>> Stashed changes
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')
@@ -170,11 +181,10 @@ def menu_principal(opcion, mote,entrenador):
 
 
         elif res == '5':
-            equipo_pokemon(12,'juan')
-            equipo_pokemon(21,'juaaasdn')
-            equipo_pokemon(32,'judsan')
-            equipo_pokemon(41,'jun')
-            equipo_pokemon(60,'jun')
+            generar_pokemon_h(12,'juan')
+            generar_pokemon_h(21,'juaaasdn')
+            generar_pokemon_h(32,'judsan')
+
 
 
 
@@ -308,7 +318,7 @@ def generar_pokemon_h(numero, x):
             
         for i, movimientos in enumerate(movi_pokemon):
                 
-            a = randint(0,65)
+            a = randint(0,60)
             mov = movi_pokemon[a]['move']['name']
             #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
         movimi.append(mov)
