@@ -4,16 +4,14 @@ from equipo import Equipo
 from random import randint
 from lista import Mochila
 from tienda import Tienda
-
+from pokedex import pokedex_h
 equipo = Equipo(5)
 mochila = Mochila()
 tienda = Tienda(1000)
 
-from pokedex import pokedex_h
+
 #from TIENDA import tienda
 
-equipo = Equipo(5)
-mochila = Mochila()
 poke = pokedex_h()
 
 
@@ -178,11 +176,6 @@ def menu_principal(opcion, mote,entrenador):
                 print('\tERROR-> La opción elejida no existe.\n')
                 os.system('pause')
 
-
-        elif res == '5':
-            equipo_pokemon(12,'juan')
-            equipo_pokemon(21,'juaaasdn')
-            equipo_pokemon(32,'judsan')
 
 
 
