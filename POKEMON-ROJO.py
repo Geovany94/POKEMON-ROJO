@@ -97,13 +97,6 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='3':
             pokedex()
         elif res=='4':
-<<<<<<< Updated upstream
-
-            tienda()
-                        
-
-            pass
-=======
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')
@@ -171,8 +164,6 @@ def menu_principal(opcion, mote,entrenador):
             else:
                 print('\tERROR-> La opción elejida no existe.\n')
                 os.system('pause')
->>>>>>> Stashed changes
-
         elif res=='0':
             break
         else:
@@ -198,40 +189,6 @@ def batalla_pokemon():
 def pokedex():
     pass
 
-<<<<<<< Updated upstream
-def tienda_objetos(dinero):
-    os.system('cls')
-    valor=dinero
-    print('\n\t\tTIENDA POKEMON \n')
-    print('\t 1-> Comprar objetos curativos')
-    print('\t 2-> Comprar Poké Ball')
-    res = str(input('\t ->'))
-    if res=='1':
-        print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
-        print('\t-----------------------------------------------_')
-        print('\t 1 Poción           |20                |300')
-        print('\t 2 Superpoción      |50                |700')
-        print('\t 3 Hiperpoción      |200               |1200')
-        print('\t 4 Restaurar todo   |Vida completa     |3000')
-        opcion= int(input('\t->	'))
-        os.system('pause')
-    elif res=='2':
-        print('\t   NOMBRE           |PROPORCION DE    |VALOR')
-        print('\t                    |CAPTURA          |')
-        print('\t -------------------------------------------------')
-        print('\t 1 Pokéball         |1                |200')
-        print('\t 2 Superball        |1.5              |600')
-        print('\t 3 Ultraball        |2                |1200')
-        print('\t 4 Masterball       |255              |100000')
-        opcion= int(input('\t->	'))
-        os.system('pause')
-    else:
-        print('\tERROR-> La opción elejida no existe.\n')
-        os.system('pause')
-
-
-
-
 
 def equipo_pokemon(numero, apodo, entrenador):
     
@@ -239,9 +196,7 @@ def equipo_pokemon(numero, apodo, entrenador):
 
     nivel = 5
 
-=======
 def equipo_pokemon(numero, apodo):
->>>>>>> Stashed changes
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()

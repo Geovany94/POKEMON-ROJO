@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import os
 class Tienda:
     def __init__(self,dinero):
@@ -47,32 +45,7 @@ class Tienda:
                 return curar 
         else:
             print('No se puede usar este objeto, No tiene en existencias')
->>>>>>> Stashed changes
 
-class Tienda_poke:
-    def __init__(self,dinero,a,b,c,d,e,f,g):
-        self.dinero= dinero
-        self.pocion= a
-        self.superpocion=b
-        self.hiperpocion=c
-        self.pokeball=d
-        self.superball=e
-        self.ultraball=f
-        self.masterball=g
-        self.restaurar_todo= a,b,c
-
-    def puntos_de_vida(self,opcion):
-        
-        if opcion == 1:
-            self.pocion = self.pocion + 20
-            self.dinero = self.dinero - 300
-            if self.dinero <200:
-                raise Exception('¡Error->MONEDAS INSUFICIES PARA HACER COMPRAS! ')
-<<<<<<< Updated upstream
-    def obejtos_captura(self):
-        pass
-
-=======
     # Funciones de compra
     def pokeballs(self, opcion):
         if opcion == 1:
@@ -159,5 +132,3 @@ class Tienda_poke:
             else:
                 print('Dinero insuficiente')
             # os.system('pause')
-    
->>>>>>> Stashed changes
