@@ -3,11 +3,11 @@ import requests
 from equipo import Equipo
 from random import randint
 from lista import Mochila
-#from TIENDA import tienda
+from tienda import Tienda
 
 equipo = Equipo(5)
 mochila = Mochila()
-
+tienda = Tienda(1000)
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -97,11 +97,81 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='3':
             pokedex()
         elif res=='4':
+<<<<<<< Updated upstream
 
             tienda()
                         
 
             pass
+=======
+            os.system('cls')
+            print('\n\t\tTIENDA POKEMON \n')
+            print('\t 1-> Ver Mochila')
+            print('\t 2-> Comprar objetos curativos')
+            print('\t 3-> Comprar Pokéball')
+            print('\tEliga una opcion')
+            opc = int(input())
+            if opc == 1:
+                os.system('cls')
+                print('\tInventario de objetos')
+                print('\tPoke ball')
+                print('\t* Pokeball ',tienda.pokeball)
+                print('\t* Ultraball ',tienda.ultraball)
+                print('\t* Superball ',tienda.superball)
+                print('\t* Masterball ',tienda.masterball)
+                print('\tPociones ')
+                print('\t* Pocion ',tienda.pocion)
+                print('\t* Super pocion ',tienda.superpocion)
+                print('\t* Hiperpocion ',tienda.hiperpocion)
+                print('\t* Restaurar toda la vida ',tienda.res_todo)
+                os.system('pause')
+            elif opc == 2:
+                os.system('cls')
+                print('\t ***OBJETOS DE CURACION***')
+                print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
+                print('\t Dinero Disponible: ', tienda.dinero)
+                print('\t------------------------------------------------')
+                print('\t 1 Poción           |20                |300')
+                print('\t 2 Superpoción      |50                |700')
+                print('\t 3 Hiperpoción      |200               |1200')
+                print('\t 4 Restaurar todo   |Vida completa     |3000')
+                print('\tEliga una opcion')
+                opcion = int(input())
+                if opcion == 1:
+                    tienda.obj_curativos(opcion)
+                elif opcion == 2:
+                    tienda.obj_curativos(opcion)
+                elif opcion == 3:
+                    tienda.obj_curativos(opcion)
+                elif opcion == 4:
+                    tienda.obj_curativos(opcion)
+                os.system('pause')
+            elif opc == 3:
+                os.system('cls')
+                print('\t ***POKE BALL***')
+                print('\t   NOMBRE           |PROPORCION DE    |VALOR ')
+                print('\t                    |CAPTURA          |')
+                print('\t Dinero Disponible: ', tienda.dinero)
+                print('\t -------------------------------------------------')
+                print('\t 1 Pokéball         |1                |200')
+                print('\t 2 Superball        |1.5              |600')
+                print('\t 3 Ultraball        |2                |1200')
+                print('\t 4 Masterball       |255              |100000')
+                print('\tEliga una opcion')
+                opcion = int(input())
+                if opcion == 1:
+                    tienda.pokeballs(opcion)
+                elif opcion == 2:
+                    tienda.pokeballs(opcion)
+                elif opcion == 3:
+                    tienda.pokeballs(opcion)
+                elif opcion == 4:
+                    tienda.pokeballs(opcion)
+                os.system('pause')
+            else:
+                print('\tERROR-> La opción elejida no existe.\n')
+                os.system('pause')
+>>>>>>> Stashed changes
 
         elif res=='0':
             break
@@ -128,6 +198,7 @@ def batalla_pokemon():
 def pokedex():
     pass
 
+<<<<<<< Updated upstream
 def tienda_objetos(dinero):
     os.system('cls')
     valor=dinero
@@ -168,6 +239,9 @@ def equipo_pokemon(numero, apodo, entrenador):
 
     nivel = 5
 
+=======
+def equipo_pokemon(numero, apodo):
+>>>>>>> Stashed changes
     clear()
     respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()

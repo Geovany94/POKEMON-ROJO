@@ -9,16 +9,18 @@ class Mochila:
 
     def insertar_inicio(self, nivel, id, nombre, apodo, xp, tipo, movimiento, stat):
         nuevo = Nodo( nivel, id, nombre, apodo, xp, tipo, movimiento, stat)
-        if self.esta_vacia():
-            self.frente = nuevo
-            self.fondo = nuevo
+        if self.tamanio < 6:
+            if self.esta_vacia():
+                self.frente = nuevo
+                self.fondo = nuevo
+            else:
+                aux = self.frente
+                self.frente = nuevo
+                nuevo.siguiente = aux
 
+                self.tamanio +=1
         else:
-            aux = self.frente
-            self.frente = nuevo
-            nuevo.siguiente = aux
-
-            self.tamanio +=1
+            print('Ya alcanzo el numero maximo de Pokemon Equipo')
 
     def menu(self):
         pass 
