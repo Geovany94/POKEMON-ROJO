@@ -100,14 +100,6 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='4':
 
 
-
-
-
-            tienda()
-                        
-
-
-
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')
