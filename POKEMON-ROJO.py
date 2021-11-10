@@ -2,9 +2,11 @@ import os
 import requests
 from equipo import Equipo
 from random import randint
+from lista import Mochila
 #from TIENDA import tienda
 
 equipo = Equipo(5)
+mochila = Mochila()
 
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
@@ -25,17 +27,22 @@ def menu_inicial():
     if res=='1':
         acceder=1
         mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote)
-        
+
 
     elif res=='2':
         acceder=4
         mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote)
+
     elif res=='3':
         acceder=7
         mote = input('\tIngrese mote para su pokemon: ')
+        equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote)
+ 
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
@@ -45,6 +52,8 @@ def menu_principal(opcion, mote):
     while True:
         os.system('color E0')
         os.system('cls')
+        
+        
         res=""
         pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
         pokemon_inicial= pokemon['name']
@@ -58,13 +67,18 @@ def menu_principal(opcion, mote):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
+            
             clear()
-            print('\n\t\tBienvenido a tu equipo pokemon')
-            print(f"1. {equipo.apodo}")
-            equipo_pokemon(opcion, mote)
-            print(equipo)
+            #print('\n\t\tBienvenido a tu equipo pokemon')
+            #print(f"1. {equipo.apodo}")
+            #equipo_pokemon(opcion, mote)
+            #print(equipo)
+            #
+            
+            n = mochila.recorrer()
+            print(n)
             input('pause...')
-
+            
         elif res=='2':
             batalla_pokemon()
         elif res=='3':
@@ -129,6 +143,7 @@ def equipo_pokemon(numero, apodo):
     pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
     especie = requests.get(pokemon['species']['url']).json()
     tipo_pokemon = pokemon['types']
+    nivel = 5
     #print("\n")
     #print("\t Este es tu pokemon:")
     id = pokemon['id']
@@ -139,7 +154,7 @@ def equipo_pokemon(numero, apodo):
     #print(f"\tEl nombre que le diste es: {apodo}")
     #nivel = 5
     #print(f"\tSu nivel es: {nivel}")
-    xp = 1500
+    xp = pokemon['base_experience']
     #print(f"\tXp es :{xp}")
     #print("\tTipo de Pokemon:")
     tipos = []
@@ -157,8 +172,8 @@ def equipo_pokemon(numero, apodo):
     for d in range(4):
         
         for i, movimientos in enumerate(movi_pokemon):
-
-            a = randint(0,62)
+            
+            a = randint(0,65)
             mov = movi_pokemon[a]['move']['name']
             #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
         movimi.append(mov)
@@ -166,15 +181,16 @@ def equipo_pokemon(numero, apodo):
 
     #print('\tStats del pokemon')
     statss = []
+    
     for item in pokemon['stats']:
         item['stat']['name']
-        #stats = print(f"\t- {item['base_stat']} ")
+            #stats = print(f"\t- {item['base_stat']} ")
         stat = item['base_stat']
         statss.append(stat)
 
     #input('\tPresione una tecla para continuar')
-    equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
-
+    #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
+    mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
  
 
 
