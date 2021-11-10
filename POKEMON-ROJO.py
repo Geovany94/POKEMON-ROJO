@@ -100,16 +100,6 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='3':
             pokedex()
         elif res=='4':
-
-
-
-
-            tienda()
-                        
-
-            pass
-
-
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')
@@ -206,47 +196,10 @@ def batalla_pokemon():
     masterball=0
 
     tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
-    tienda_objetos(dinero)
-
-
-    tienda_objetos(dinero,pocion)
 
 
 def pokedex():
     pass
-
-
-
-def tienda_objetos(dinero):
-
-    os.system('cls')
-    valor=dinero
-    print('\n\t\tTIENDA POKEMON \n')
-    print('\t 1-> Comprar objetos curativos')
-    print('\t 2-> Comprar Poké Ball')
-    res = str(input('\t ->'))
-    if res=='1':
-        print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
-        print('\t-----------------------------------------------_')
-        print('\t 1 Poción           |20                |300')
-        print('\t 2 Superpoción      |50                |700')
-        print('\t 3 Hiperpoción      |200               |1200')
-        print('\t 4 Restaurar todo   |Vida completa     |3000')
-        opcion= int(input('\t->	'))
-        os.system('pause')
-    elif res=='2':
-        print('\t   NOMBRE           |PROPORCION DE    |VALOR')
-        print('\t                    |CAPTURA          |')
-        print('\t -------------------------------------------------')
-        print('\t 1 Pokéball         |1                |200')
-        print('\t 2 Superball        |1.5              |600')
-        print('\t 3 Ultraball        |2                |1200')
-        print('\t 4 Masterball       |255              |100000')
-        opcion= int(input('\t->	'))
-        os.system('pause')
-    else:
-        print('\tERROR-> La opción elejida no existe.\n')
-        os.system('pause')
 
 def equipo_pokemon(numero, apodo):
     
