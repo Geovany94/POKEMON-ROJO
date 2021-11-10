@@ -6,7 +6,9 @@ class Mochila:
         self.frente = None
         self.fondo = None
         self.tamanio = 0
+        self.max = 6
 
+<<<<<<< Updated upstream
     def insertar_inicio(self, nivel, id, nombre, apodo, xp, tipo, movimiento, stat):
         nuevo = Nodo( nivel, id, nombre, apodo, xp, tipo, movimiento, stat)
         if self.tamanio < 6:
@@ -21,6 +23,24 @@ class Mochila:
                 self.tamanio +=1
         else:
             print('Ya alcanzo el numero maximo de Pokemon Equipo')
+=======
+    def insertar_inicio(self, nivel, id, nombre, apodo, xp, tipo, movimiento, stat, max):
+        if max > self.max:
+            raise Exception('no se pueden mas de 6')
+           
+        else:
+            nuevo = Nodo( nivel, id, nombre, apodo, xp, tipo, movimiento, stat)
+            if self.esta_vacia():
+                self.frente = nuevo
+                self.fondo = nuevo
+
+            else:
+                aux = self.frente
+                self.frente = nuevo
+                nuevo.siguiente = aux
+
+                self.tamanio +=1
+>>>>>>> Stashed changes
 
     def menu(self):
         pass 
