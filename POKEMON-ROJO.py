@@ -100,8 +100,7 @@ def menu_principal(opcion, mote,entrenador):
         elif res=='3':
             pokedex()
         elif res=='4':
-<<<<<<< Updated upstream
-=======
+
 
 
 
@@ -110,7 +109,7 @@ def menu_principal(opcion, mote,entrenador):
                         
 
 
->>>>>>> Stashed changes
+
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')
@@ -181,9 +180,9 @@ def menu_principal(opcion, mote,entrenador):
 
 
         elif res == '5':
-            generar_pokemon_h(12,'juan')
-            generar_pokemon_h(21,'juaaasdn')
-            generar_pokemon_h(32,'judsan')
+            equipo_pokemon(12,'juan')
+            equipo_pokemon(21,'juaaasdn')
+            equipo_pokemon(32,'judsan')
 
 
 
