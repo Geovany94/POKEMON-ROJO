@@ -3,11 +3,21 @@ import requests
 from equipo import Equipo
 from random import randint
 from lista import Mochila
+<<<<<<< Updated upstream
 from tienda import Tienda
 
 equipo = Equipo(5)
 mochila = Mochila()
 tienda = Tienda(1000)
+=======
+from pokedex import pokedex_h
+#from TIENDA import tienda
+
+equipo = Equipo(5)
+mochila = Mochila()
+poke = pokedex_h()
+
+>>>>>>> Stashed changes
 
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
@@ -28,7 +38,7 @@ def menu_inicial():
         acceder=1
         mote = input('\tIngrese mote para su pokemon: ')
 
-        equipo_pokemon(acceder, mote, entrenador)
+        equipo_pokemon(acceder, mote)
         
         menu_principal(acceder, mote, entrenador)
 
@@ -36,13 +46,13 @@ def menu_inicial():
     elif res=='2':
         acceder=4
         mote = input('\tIngrese mote para su pokemon: ')
-        equipo_pokemon(acceder, mote, entrenador)
+        equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote, entrenador)
         
     elif res=='3':
         acceder=7
         mote = input('\tIngrese mote para su pokemon: ')
-        equipo_pokemon(acceder, mote, entrenador)
+        equipo_pokemon(acceder, mote)
         menu_principal(acceder, mote,entrenador)
 
     else:
@@ -50,12 +60,6 @@ def menu_inicial():
         os.system('pause')
         menu_inicial()
     
-
-
-
-    
-
-
 def menu_principal(opcion, mote,entrenador):
 
     while True:
@@ -103,6 +107,7 @@ def menu_principal(opcion, mote,entrenador):
                         
 
             pass
+<<<<<<< Updated upstream
 =======
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
@@ -172,6 +177,15 @@ def menu_principal(opcion, mote,entrenador):
                 print('\tERROR-> La opción elejida no existe.\n')
                 os.system('pause')
 >>>>>>> Stashed changes
+=======
+        elif res == '5':
+            equipo_pokemon(12,'juan')
+            equipo_pokemon(21,'juaaasdn')
+            equipo_pokemon(32,'judsan')
+            equipo_pokemon(41,'jun')
+            equipo_pokemon(60,'jun')
+
+>>>>>>> Stashed changes
 
         elif res=='0':
             break
@@ -195,11 +209,15 @@ def batalla_pokemon():
 
     tienda_objetos(dinero,pocion)
 
+<<<<<<< Updated upstream
 def pokedex():
     pass
 
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 def tienda_objetos(dinero):
+
     os.system('cls')
     valor=dinero
     print('\n\t\tTIENDA POKEMON \n')
@@ -229,13 +247,80 @@ def tienda_objetos(dinero):
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
 
+def equipo_pokemon(numero, apodo):
+    try:
+        max = 0
+        max += 1
+        
+        nivel = 5
+
+        clear()
+        respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
+        pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
+        especie = requests.get(pokemon['species']['url']).json()
+        tipo_pokemon = pokemon['types']
+        nivel = 5
+            #print("\n")
+            #print("\t Este es tu pokemon:")
+        id = pokemon['id']
+                #print(f"\tNo. {pokemon['id']}")
+        nombre = pokemon['name']
+                #print(f"\ttu pokemon: {pokemon['name']}")
+        apo = apodo
+                #print(f"\tEl nombre que le diste es: {apodo}")
+                #nivel = 5
+                #print(f"\tSu nivel es: {nivel}")
+        xp = pokemon['base_experience']
+                #print(f"\tXp es :{xp}")
+                #print("\tTipo de Pokemon:")
+        tipos = []
+        for i, tipo in enumerate(tipo_pokemon):
+            traduccion= requests.get(tipo['type']['url']).json()
+            traducido=traduccion['names']
+            tip = traducido[4]['name']
+                    #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+            tipos.append(tip)
+
+                # Movimientos Muestra todo, tiene que ser solo cuatro
+        movi_pokemon = pokemon['moves']
+
+        movimi = []
+        for d in range(4):
+                    
+            for i, movimientos in enumerate(movi_pokemon):
+                        
+                a = randint(0,65)
+                mov = movi_pokemon[a]['move']['name']
+                    #movimientos = print(f"\t{i+1} - {movi_pokemon[a]['move']['name']}")
+            movimi.append(mov)
+                #print(f"\tSus movimientos son {movimi}")
+
+                #print('\tStats del pokemon')
+        statss = []
+                
+        for item in pokemon['stats']:
+            item['stat']['name']
+                        #stats = print(f"\t- {item['base_stat']} ")
+            stat = item['base_stat']
+            statss.append(stat)
+
+                #input('\tPresione una tecla para continuar')
+                #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
+        mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss, max)
+
+    except Exception as e:
+        print('Ocurrio un error')
+        input(e)
 
 
+def generar_pokemon_h(numero, x):
+    atrapado = False
+    if x == True:
+        atrapado = True
 
+    elif x == False:
+        atrapado = False
 
-def equipo_pokemon(numero, apodo, entrenador):
-    
-    
 
     nivel = 5
 
@@ -254,7 +339,6 @@ def equipo_pokemon(numero, apodo):
         #print(f"\tNo. {pokemon['id']}")
     nombre = pokemon['name']
         #print(f"\ttu pokemon: {pokemon['name']}")
-    apo = apodo
         #print(f"\tEl nombre que le diste es: {apodo}")
         #nivel = 5
         #print(f"\tSu nivel es: {nivel}")
@@ -294,39 +378,14 @@ def equipo_pokemon(numero, apodo):
 
         #input('\tPresione una tecla para continuar')
         #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
-    mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
- 
+    poke.insertar_inicio(nivel, id, nombre, xp, tipos, movimi, statss, atrapado)
 
+def pokedex():
+    print('Bienvedido a la pokedex')
+    c = poke.recorrer()
+    print(c)
+    input('pause...')
 
-def generar_pokemon():
-    numero = randint(0, 75)
-    
-    clear()
-    respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
-    pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
-    especie = requests.get(pokemon['species']['url']).json()
-    tipo_pokemon= pokemon['types']
-
-    id = pokemon['id']
-
-    nombre = pokemon['name']
-    nivel = 5
-    xp = 1500
-    for i, tipo in enumerate(tipo_pokemon):
-        traduccion= requests.get(tipo['type']['url']).json()
-        traducido=traduccion['names']
-        tipo = (f"{i+1}{traducido[4]['name']}")
-
-    movimientos = print('\tTiene "danza dragon"') #----------------------------------------------------------- Componer -------------------------------
-    
-    for item in pokemon['stats']:
-    
-        nombre_stats= f"{item['stat']['name']}"
-        stats = (f"{item['base_stat']}") 
-
-
-    input('\tPresione una tecla para continuar')
-    equipo.generar_poke_rival(id, nombre, xp, tipo, movimientos, nombre_stats, stats)
     
 
 
