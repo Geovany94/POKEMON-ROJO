@@ -204,7 +204,7 @@ def pokedex():
     pass
 
 def equipo_pokemon(numero, apodo):
-    if mochila.tam > 6:
+    if mochila.tam > 5:
         mochila .eliminar_inicio()
         print('No se pueden mas de 6 pokemons')
         input('presiones una tecla...')
