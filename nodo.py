@@ -14,4 +14,4 @@ class Nodo:
         self.siguiente = None
 
     def __str__(self):
-        return str(f"\n \tLa id es: {self.id}\n \tnombre: {self.nombre}\n \tel apodo es: {self.apodo}\n \tsu nivel: {self.nivel}\n \tSu experiencia es: {self.xp}\n \tEl tipo es: {self.tipo}\n \tsus movimientos son: {self.movimientos}\n \ty sus stats son {self.stat}\n\n")
+        return str(f"\n---------------------------------------\n \tNo. en la pokedex = {self.id}\n \tNombre = {str(self.nombre).capitalize()}\n \tApodo = {self.apodo}\n \tNivel = {self.nivel}\n \tExperiencia = {self.xp}\n \tTipo = {self.tipo}\n \tMovimientos = {self.movimientos}\n \tPuntos de combate=\n\t   Ps= {self.stat[0]}\n\t   Ataque= {self.stat[1]}\n\t   Defensa = {self.stat[2]}\n\t   Ataque especial= {self.stat[3]}\n\t   Defensa especial= {self.stat[4]}\n\t   Velocidad = {self.stat[5]}\n\t\n\n")
