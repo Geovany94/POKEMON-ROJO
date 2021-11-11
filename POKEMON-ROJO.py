@@ -269,10 +269,6 @@ def equipo_pokemon(numero, apodo):
    
         mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
 
-
-
-
-
 def generar_pokemon_h(numero, x):
     atrapado = False
     if x == True:
@@ -336,9 +332,7 @@ def generar_pokemon_h(numero, x):
         #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
     
     poke.insertar_inicio(nivel, id, nombre, xp, tipos, movimi, statss, atrapado)
-
-    
-
+   
 def pokedex():
     print('Bienvedido a la pokedex')
     c = poke.recorrer()
