@@ -5,11 +5,11 @@ from random import randint
 from lista import Mochila
 from tienda import Tienda
 from pokedex import pokedex_h
-from Batalla_pokemon import *
+from Batalla_pokemon import Pokemon
 equipo = Equipo(5)
 mochila = Mochila()
 tienda = Tienda(1000)
-
+po = Pokemon(0,0,0)
 
 poke = pokedex_h()
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
@@ -80,6 +80,8 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
             #equipo_pokemon(opcion, mote)
             #print(equipo)
             n = mochila.recorrer()
+            s = po.devolver() 
+            print(s)
             print(n)
             input('pause...')
         elif res=='2':
