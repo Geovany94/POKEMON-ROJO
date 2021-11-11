@@ -1,28 +1,94 @@
-            tipos_pokesal=[]
-            tipos_poke=[]
-            movimientos_oficiales= requests.get(f"https://pokeapi.co/api/v2/generation/{opcion}/").json()
-            #EXTRAR INFORMACION DE LA POKEAPI
-            pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
-            tipo_pokemon= pokemon['types']
-            #PARA ENCONTRAR LOS TIPOS DE POKEMON QUE ES EJEMPLO PICACHU = ELECTRICO
-            for i, tipo in enumerate(tipo_pokemon):
-                traduccion= requests.get(tipo['type']['url']).json()
-                traducido=traduccion['names']
-                tipo = traducido[4]['name']
-                tipos_poke.append(tipo)
-            pokemon_inicial= Pokemon(pokemon['name'], tipos_poke)
+  while (self.ps > 0) and (Pokemon2.ps > 0):
+            
+            print(f"\n{self.name}\t\tHLTH\t{self.ps}")
+            print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.ps}\n")
 
-            #ELECCION E INFORMACION DE POKEMON SALVAJE
-            poke_sal=[]
-            opcion2=randint(1,898)
-            pokemon_sal= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion2}/").json()
-            tipo_pokemon_sal= pokemon_sal['types']
-            for i, tipo in enumerate(tipo_pokemon_sal):
-                traduccion2= requests.get(tipo['type']['url']).json()
-                traducido2=traduccion2['names']
-                tipo2 = traducido2[4]['name']
-                poke_sal.append(tipo2)
-            pokemon_salvaje= Pokemon(pokemon_sal['name'],poke_sal)
+            print(f"Go {self.name}!")
+            print('1. ATACAR')
+            print('2. CAPTURAR')
+            print('3. OBJETOS CURATIVOS')
+            print('4. HUIR')
+            print('5. HISTORIAL DE COMBATE')
+            eleccion=int(input())
+            if eleccion==1:
+               
 
-            pokemon_inicial.batalla(pokemon_salvaje)
-            os.system('pause')
+                time.sleep(1)
+                print(f"\n{self.name}\t\tHLTH\t{self.health}")
+                print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+                time.sleep(.5)
+
+    
+                if Pokemon2.ps <= 0:
+                    impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
+                    break
+
+            elif eleccion==2:
+                bolsa_pokeball=5
+                pokeball=1
+                superball=1.5
+                ultraball=2
+                masterball=255
+
+
+# CODIGO DE LA SELECCION "OBJETOS CURATICOS"
+            elif eleccion==3:
+                pocion=20
+                superpocion=50
+                hiperpocion=200
+                restaurart_todo= self.ps
+                print("1. Pocion", pocion)
+                print("2. Superpocion", superpocion)
+                print("3. Hiperpocion", hiperpocion)
+                print("4. Restaurar todo", restaurart_todo)
+                opcion=int(input)
+                if opcion ==1:
+                    pocion= pocion-20
+                    self.ps= self.ps +20
+                if opcion ==2:
+                    superpocion= superpocion-50
+                    self.ps= self.ps +50
+                if opcion ==3:
+                    hiperpocion= hiperpocion-200
+                    self.ps= self.ps +200
+                #if opcion ==4:
+                    #restaurart_todo= restaurart_todo-20
+                    #self.ps= self.ps +20
+                else:
+                    print('\tERROR-> La opción elejida no existe.\n')
+
+    # CODIGO DE LA SELECCION "HUIR DEL COMBATE"
+            elif eleccion==4:
+                pokemonini= requests.get(f"https://pokeapi.co/api/v2/pokemon/{self.opcion}/").json()
+                poke_velocidad= pokemonini['stats'][5]['base_stat']
+                pokemonsal= requests.get(f"https://pokeapi.co/api/v2/pokemon/{Pokemon2.opcion}/").json()
+                pokesal_velocidad= pokemonsal['stats'][5]['base_stat']
+                infor= Huir(poke_velocidad,pokesal_velocidad)
+                f= infor.huir_del_combate()
+                aleatorio= randint(0,255)
+                if aleatorio<f:
+                    print("¡HUIDA EXITOSA!")
+                else:
+                    print("¡NO SE PUEDE HUIR!")
+    # CODIGO DE LA SELECCION "HISTORIAL COMBATE"
+            elif eleccion==5:
+                print(10)
+            else:
+                print('\tERROR-> La opción elejida no existe.\n')
+
+            
+           
+
+            print(f"Go {Pokemon2.name}!")
+    
+            time.sleep(1)
+        
+            time.sleep(1)
+            print(f"{self.name}\t\tHLTH\t{self.health}")
+            print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+            time.sleep(.5)
+
+            # Check to see if Pokemon fainted
+            if self.bars <= 0:
+                print("\n..." + self.name + ' fainted.')
+                break

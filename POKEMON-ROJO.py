@@ -5,17 +5,13 @@ from random import randint
 from lista import Mochila
 from tienda import Tienda
 from pokedex import pokedex_h
+from Batalla_pokemon import *
 equipo = Equipo(5)
 mochila = Mochila()
 tienda = Tienda(1000)
 
 
-#from TIENDA import tienda
-
 poke = pokedex_h()
-
-
-
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
 def menu_inicial():
@@ -34,33 +30,33 @@ def menu_inicial():
     if res=='1':
         acceder=1
         mote = input('\tIngrese mote para su pokemon: ')
-
+        movi_poke = movimientos_poke_inicial(acceder)
         equipo_pokemon(acceder, mote)
-        
-        menu_principal(acceder, mote, entrenador)
-
-
+        menu_principal(acceder, mote, entrenador, movi_poke)
     elif res=='2':
         acceder=4
         mote = input('\tIngrese mote para su pokemon: ')
         equipo_pokemon(acceder, mote)
-        menu_principal(acceder, mote, entrenador)
-        
+        movi_poke = movimientos_poke_inicial(acceder)
+        menu_principal(acceder, mote, entrenador, movi_poke)
     elif res=='3':
         acceder=7
         mote = input('\tIngrese mote para su pokemon: ')
         equipo_pokemon(acceder, mote)
-        menu_principal(acceder, mote,entrenador)
-
+        movi_poke = movimientos_poke_inicial(acceder)
+        menu_principal(acceder, mote, entrenador, movi_poke)
     else:
         print('\tERROR-> La opción elejida no existe.\n')
         os.system('pause')
         menu_inicial()
     
-def menu_principal(opcion, mote,entrenador):
+        
+
+    
+def menu_principal(opcion, mote,entrenador, movi_poke):
 
     while True:
-        os.system('color E0')
+        os.system('color D0')
         os.system('cls')
         
         
@@ -77,28 +73,30 @@ def menu_principal(opcion, mote,entrenador):
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
-
-            
             clear()
             #print('\n\t\tBienvenido a tu equipo pokemon')
             #print(f"1. {equipo.apodo}")
             #equipo_pokemon(opcion, mote)
             #print(equipo)
-            #
-            
             n = mochila.recorrer()
             print(n)
             input('pause...')
-            
-
-            
-
         elif res=='2':
-            batalla_pokemon()
+            os.system('color 0B')
+        # ENVIAR INFORMACION DEL POKEMON INICIAL
+            nivel=5
+            pokemon_inicial= Pokemon(opcion, nivel, movi_poke)
+        # CREAR INFORMACION DEL POKEMON SALVAJE
+            opcion_sal= randint(1,898)
+            nivel_sal=randint(0,4)
+            pokemon_salvaje= Pokemon(opcion_sal, nivel_sal, None)
+            pokemon_inicial.batalla(pokemon_salvaje)
+            os.system('pause')
+
+
         elif res=='3':
             pokedex()
         elif res=='4':
-
 
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
@@ -123,55 +121,55 @@ def menu_principal(opcion, mote,entrenador):
                 os.system('pause')
             elif opc == 2:
                 os.system('cls')
+
                 print('\t ***OBJETOS DE CURACION***')
-                print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
                 print('\t Dinero Disponible: ', tienda.dinero)
+                print('\t   NOMBRE           |PUNTOS DE SALUD   |VALOR')
                 print('\t------------------------------------------------')
                 print('\t 1 Poción           |20                |300')
                 print('\t 2 Superpoción      |50                |700')
                 print('\t 3 Hiperpoción      |200               |1200')
                 print('\t 4 Restaurar todo   |Vida completa     |3000')
                 print('\tEliga una opcion')
-                opcion = int(input())
-                if opcion == 1:
-                    tienda.obj_curativos(opcion)
-                elif opcion == 2:
-                    tienda.obj_curativos(opcion)
-                elif opcion == 3:
-                    tienda.obj_curativos(opcion)
-                elif opcion == 4:
-                    tienda.obj_curativos(opcion)
+                opcion2 = int(input())
+                if opcion2 == 1:
+                    tienda.obj_curativos(opcion2)
+                elif opcion2 == 2:
+                    tienda.obj_curativos(opcion2)
+                elif opcion2 == 3:
+                    tienda.obj_curativos(opcion2)
+                elif opcion2 == 4:
+                    tienda.obj_curativos(opcion2)
                 os.system('pause')
             elif opc == 3:
                 os.system('cls')
                 print('\t ***POKE BALL***')
+                print('\t Dinero Disponible: ', tienda.dinero)
                 print('\t   NOMBRE           |PROPORCION DE    |VALOR ')
                 print('\t                    |CAPTURA          |')
-                print('\t Dinero Disponible: ', tienda.dinero)
                 print('\t -------------------------------------------------')
                 print('\t 1 Pokéball         |1                |200')
                 print('\t 2 Superball        |1.5              |600')
                 print('\t 3 Ultraball        |2                |1200')
                 print('\t 4 Masterball       |255              |100000')
                 print('\tEliga una opcion')
-                opcion = int(input())
-                if opcion == 1:
-                    tienda.pokeballs(opcion)
-                elif opcion == 2:
-                    tienda.pokeballs(opcion)
-                elif opcion == 3:
-                    tienda.pokeballs(opcion)
-                elif opcion == 4:
-                    tienda.pokeballs(opcion)
+                opcion3 = int(input())
+                if opcion3 == 1:
+                    tienda.pokeballs(opcion3)
+                elif opcion3 == 2:
+                    tienda.pokeballs(opcion3)
+                elif opcion3 == 3:
+                    tienda.pokeballs(opcion3)
+                elif opcion3 == 4:
+                    tienda.pokeballs(opcion3)
+                else:
+                    print('\tERROR-> La opción elejida no existe.\n')
+                os.system('pause')
                 os.system('pause')
             else:
                 print('\tERROR-> La opción elejida no existe.\n')
                 os.system('pause')
-
-
-
-
-
+            os.system('color 0B')
 
         elif res=='0':
             break
@@ -179,17 +177,21 @@ def menu_principal(opcion, mote,entrenador):
             print('\tERROR-> La opción elejida no existe.\n')
             os.system('pause')
             
-def batalla_pokemon():
-    dinero=0
-    pocion=0
-    superpocion=0
-    hiperpocion=0
-    pokeball=0
-    superball=0
-    ultraball=0
-    masterball=0
-
-    tienda(pocion,superpocion,hiperpocion,pokeball,superball,ultraball,masterball)
+def movimientos_poke_inicial(opcion):
+    movimientos=[]
+    movi=[]
+    pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
+    poke=pokemon['moves']
+    #AGREGAR 4 NUMEROS ALEATORIOS PARA PODER OBTENER MOVIMIENTOS DE POKEMON
+    for i in range(0,2):
+        asignar= randint(0,len(poke))
+        movimientos.append(asignar)
+    for i in range(len(movimientos)):
+        m=movimientos[i]
+        traduccion= requests.get(poke[m]['move']['url']).json()
+        traducido=traduccion['names']
+        movi.append(traducido[5]['name'])
+    return movi
 
 
 def pokedex():
@@ -340,7 +342,6 @@ os.system('color F0')
 print('\n\n\t\t By ANA ELENA CAMAJÁ RODRÍGUEZ               1590219')
 print('\t\t By Cesar Geovany Ambrocio Quiej             1641417')
 print('\t\t By Angel André Cotco Cuzal                  1518321')
-
 print('\t\t By Dennys Rolando Yosimar Carreto Aguilon    2276616\n')
 
 

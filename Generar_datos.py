@@ -1,5 +1,8 @@
 
 
+from numpy import mod
+
+
 class Datos:
     def __init__(self, nivel, ps, psindividual):
         self.vi = psindividual
@@ -19,12 +22,25 @@ class Datos:
     def daños_punto_salud():
         pass
 
-    def huir_del_combate():
-        pass
+class Huir:
+    def __init__(self, velocidadpoke, velocidadpokesal):
+        self.A = velocidadpoke
+        self.B = velocidadpokesal
+        
+    def huir_del_combate(self):
+        f=(((self.A+128)/self.B)+30)% 256
+        return f
 
-    def capturar_pokemon_sal():
-        pass
 
+class Capturar_poke:
+    def __init__(self, ps, psactual, proporcion_captura, pokeball):
+        self.psmax= ps
+        self.psactual= psactual
+        self.Rc= proporcion_captura
+        self.Rb= pokeball
+    def capturar_pokemon_sal(self):
+        a= (((3*self.psmax)-2*self.psactual)*self.Rc*self.Rb)/(3*self.psmax)
+        return a
     def aprendizaje_de_movimientos():
         pass
 

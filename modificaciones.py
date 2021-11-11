@@ -44,29 +44,11 @@ def menu_principal(opcion, mote, entrenador, movi_poke):
             nivel=5
             pokemon_inicial= Pokemon(opcion, nivel, movi_poke)
         # CREAR INFORMACION DEL POKEMON SALVAJE
-            opcion_sal= 199#randint(1,898)
+            opcion_sal= randint(1,898)
             nivel_sal=randint(0,4)
             pokemon_salvaje= Pokemon(opcion_sal, nivel_sal, None)
             pokemon_inicial.batalla(pokemon_salvaje)
 
-            print('1. ATACAR')
-            print('2. CAPTURAR')
-            print('3. OBJETOS CURATIVOS')
-            print('4. HUIR')
-            print('5. HISTORIAL DE COMBATE')
-            eleccion=int(input())
-            if eleccion==1:
-                print(7)
-            elif eleccion==2:
-                print(3)
-            elif eleccion==3:
-                print(8)
-            elif eleccion==4:
-                print(9)
-            elif eleccion==5:
-                print(10)
-            else:
-                print('\tERROR-> La opción elejida no existe.\n')
 
             os.system('pause')
 
@@ -74,7 +56,7 @@ def menu_principal(opcion, mote, entrenador, movi_poke):
             pocion=0
             superpocion=0
             hiperpocion=0
-            pokeball=0
+            pokeball=1
             superball=0
             ultraball=0
             masterball=0

@@ -3,7 +3,7 @@ import time
 import numpy as np 
 import requests
 from random import randint
-from Generar_datos import Datos
+from Generar_datos import Capturar_poke, Datos, Huir
 
 
 
@@ -60,11 +60,11 @@ def movimientos(opcion):
         m=movimientos[i]
         traduccion= requests.get(poke[m]['move']['url']).json()
         traducido=traduccion['names']
-        print(f"  {traducido[5]['name']}")
+        print( traducido[5]['name'])
 
 
 def datos_combate(opcion):
-    datos = []
+    datos=[]
     pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
     tipo_pokemon= pokemon['stats']
     for i, tipo in enumerate(tipo_pokemon):
@@ -72,6 +72,7 @@ def datos_combate(opcion):
         traducido=traduccion['names']
         valor=tipo['base_stat']
         datos.append(valor)
+    return str(*datos)
 
    
 # IMPRESION DE PALABRAS LETRA POR LETRA
@@ -89,6 +90,7 @@ class  Pokemon :
         self.movimiento= movi
         self.ps= 0
         self.escribir= señal
+        self.estadisticas= []
         
 
 
@@ -97,6 +99,7 @@ class  Pokemon :
         #LUCHA DE DOS POKEMONS
         #IMPRIME INFORMACION DE LA PELEA
         self.ps= puntos_salud(self,self.opcion)
+        self.estadisticas= datos_combate(self.opcion)
         self.nombre= pokeapy(self.opcion,'name' )
         print("-----BATALLA POKEMON-----")
         print(f"\n{self.nombre}")
@@ -104,17 +107,150 @@ class  Pokemon :
         print("PS",self.escribir, self.ps)
       
         print("\nVS")
-        
 
         #INFORMACION DEL POKEMON SALVAHE
         Pokemon2.ps= puntos_salud(self,Pokemon2.opcion)
+        Pokemon2.estadisticas= datos_combate(Pokemon2.opcion)
         Pokemon2.nombre= pokeapy(Pokemon2.opcion,'name' )
         print(f"\n{Pokemon2.nombre}")
         print("Nivel/", Pokemon2.nivel)
         print("PS",Pokemon2.escribir, Pokemon2.ps)
+        ps_pokeini=self.ps
+        ps_pokesal=Pokemon2.ps
 
-        
+
+ 
+        while (self.ps > 0) and (Pokemon2.ps > 0):
+            pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{self.opcion}").json()
+            propor_captura= pokemon['capture_rate']
+
+            
+            print(f"\n{self.name}\t\tPS\t{self.ps}")
+            print(f"{Pokemon2.name}\t\tPS\t{Pokemon2.ps}\n")
+
+            print(f"Go {self.name}!")
+            print('1. ATACAR')
+            print('2. CAPTURAR')
+            print('3. OBJETOS CURATIVOS')
+            print('4. HUIR')
+            print('5. HISTORIAL DE COMBATE')
+            eleccion=int(input())
+            if eleccion==1:
+                time.sleep(1)
+                print(f"\n{self.name}\t\tHLTH\t{self.health}")
+                print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+                time.sleep(0.5)
+                if Pokemon2.ps <= 0:
+                    impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
+                    break
+
+            elif eleccion==2:
+                a=0
+                pokeball=1
+                superball=1.5
+                ultraball=2
+                masterball=255
+                print("1. Pokeball", pokeball)
+                print("2. Superball", superball)
+                print("3. Ultraball", ultraball)
+                print("4. Masterball", masterball)
+                opcion=int(input)
+                if opcion ==1:
+                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
+                    a= infor.capturar_pokemon_sal()
+                    pokeball= pokeball-1
+                elif opcion ==2:
+                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, superball)
+                    a= infor.capturar_pokemon_sal()
+                    superball= superball-1.5
+                elif opcion ==3:
+                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, ultraball)
+                    a= infor.capturar_pokemon_sal()
+                    hiperpocion= hiperpocion-2
+                elif opcion ==4:
+                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, masterball)
+                    a= infor.capturar_pokemon_sal()
+                    masterball= masterball-255
+                else:
+                    print('\tERROR-> La opción elejida no existe.\n')
+                if a>=255:
+                    impresion_letras("'¡POKEMON CAPTURADO!...")
+                else:
+                    impresion_letras("'¡POKEMON NO CAPTURADO!...")
+
+
+
+# CODIGO DE LA SELECCION "OBJETOS CURATICOS"
+            elif eleccion==3:
+                pocion=20
+                superpocion=50
+                hiperpocion=200
+                restaurart_todo= ps_pokeini
+                print("1. Pocion", pocion)
+                print("2. Superpocion", superpocion)
+                print("3. Hiperpocion", hiperpocion)
+                print("4. Restaurar todo", restaurart_todo)
+                opcion=int(input)
+                if opcion ==1:
+                    pocion= pocion-20
+                    self.ps= self.ps +20
+                elif opcion ==2:
+                    superpocion= superpocion-50
+                    self.ps= self.ps +50
+                elif opcion ==3:
+                    hiperpocion= hiperpocion-200
+                    self.ps= self.ps +200
+                elif opcion ==4:
+                    restaurart_todo= restaurart_todo-20
+                    self.ps= ps_pokeini
+                else:
+                    print('\tERROR-> La opción elejida no existe.\n')
+
+    # CODIGO DE LA SELECCION "HUIR DEL COMBATE"
+            elif eleccion==4:
+                pokemonini= requests.get(f"https://pokeapi.co/api/v2/pokemon/{self.opcion}/").json()
+                poke_velocidad= pokemonini['stats'][5]['base_stat']
+                pokemonsal= requests.get(f"https://pokeapi.co/api/v2/pokemon/{Pokemon2.opcion}/").json()
+                pokesal_velocidad= pokemonsal['stats'][5]['base_stat']
+                infor= Huir(poke_velocidad,pokesal_velocidad)
+                f= infor.huir_del_combate()
+                aleatorio= randint(0,255)
+                if aleatorio<f:
+                    impresion_letras("¡HUIDA EXITOSA!...")
+                else:
+                    impresion_letras("¡NO SE PUEDE HUIR!...")
+    # CODIGO DE LA SELECCION "HISTORIAL COMBATE"
+            elif eleccion==5:
+                print(10)
+            else:
+                print('\tERROR-> La opción elejida no existe.\n')
+
+            
+           
+
+            print(f"Go {Pokemon2.name}!")
     
-        time.sleep(2)
+            time.sleep(1)
+        
+            time.sleep(1)
+            print(f"{self.name}\t\tHLTH\t{self.health}")
+            print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+            time.sleep(.5)
 
-       
+            # Check to see if Pokemon fainted
+            if self.bars <= 0:
+                print("\n..." + self.name + ' fainted.')
+                break
+
+
+
+
+        #pokemon1= Pokemon(self.name, self.nivel)
+        #pokemonsal= Pokemon(Pokemon2.name, Pokemon2.nivel)
+        #pokemon1.ps= self.ps
+        #pokemonsal.ps= Pokemon2.ps
+        #pokemon1.estadisticas= {self.estadisticas}
+        #pokemonsal.estadisticas= {Pokemon2.estadisticas}
+        #pokemon1.ataques = [Ataque()]
+        time.sleep(2)
+     
