@@ -82,7 +82,7 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
             n = mochila.recorrer()
             s = po.devolver() 
             print(s)
-            print(n)
+            print(n)    
             input('pause...')
         elif res=='2':
             os.system('color 0B')
