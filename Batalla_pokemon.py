@@ -4,9 +4,11 @@ import requests
 from random import randint
 from Generar_datos import Capturar_poke, Datos, Huir
 from lista import Mochila
+from pokedex import pokedex_h
 
 
 mochila = Mochila()
+poke = pokedex_h()
 
 
 # esta funcion me verifica si la lista que le mande esta vacia, valor=booleano(True,False)
@@ -58,12 +60,18 @@ def movimientos(opcion):
         movimientos.pop(eliminar)
         movimientos.append(randint(0,len(poke)))
 #TRADUCIR EL NOMBRE DEL MOVIMIENTO
+    mov = []
     for i in range(0,len(movimientos)):
-        m=movimientos[i]
-        traduccion= requests.get(poke[m]['move']['url']).json()
-        traducido=traduccion['names']
+        for d in range(4):
+            m=movimientos[i]
+            traduccion= requests.get(poke[m]['move']['url']).json()
+            traducido=traduccion['names']
+            #----------------------------------------------- Arreglar --------------------------------------------------------------
+            mo = traducido[5]['name']
+        
         print( traducido[5]['name'])
-
+        mov.append(mo)
+    return mov
 
 def datos_combate(opcion):
     datos=[]
@@ -84,14 +92,15 @@ def impresion_letras(s):
         sys.stdout.flush()
         time.sleep(0.05)
 
-def equipo_pokemon(numero, apodo):
+
+def equipo_pokemon(numero, apodo, niv):
     if mochila.tam > 5:
         mochila .eliminar_inicio()
         print('No se pueden mas de 6 pokemons')
         input('presiones una tecla...')
 
     else:    
-        nivel = 5
+        nivel = niv
 
         respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
         pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
@@ -148,7 +157,107 @@ def equipo_pokemon(numero, apodo):
     
    
         mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
+
+def movimientos_al(opcion):
+    #EXTRAER INFORMACION DE LA POKEAPI
+    movimi = []
+    movimientos=[]
+    archivos=[]
+    repetidos=[]
+    pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
+    poke=pokemon['moves']
+#AGREGAR 4 NUMEROS ALEATORIOS PARA PODER OBTENER MOVIMIENTOS DE POKEMON
+    if len(poke)>4:
+        for i in range(0,4):
+            asignar= randint(0,len(poke))
+            movimientos.append(asignar)
+    else:
+        for i in range(len(poke)):
+            movimientos.append(i)
+
+    #ENCONTRAR SI DENTRO DEL AREGLO EXISTEN VALORES REPETIDOS
+    for i in movimientos:
+        if i not in archivos:
+            archivos.append(i)
+        else:
+            repetidos.append(i)
+
+#ELIMINAR ELEMENTO REPETIDO
+    if lista(repetidos)==True:
+        pass
+    else:
+        eliminar= movimientos.index(repetidos[0])
+        movimientos.pop(eliminar)
+        movimientos.append(randint(0,len(poke)))
+#TRADUCIR EL NOMBRE DEL MOVIMIENTO
+    for i in range(0,len(movimientos)):
+        for d in range(4):
+            m = movimientos[i]
+            traduccion= requests.get(poke[m]['move']['url']).json()
+            traducido=traduccion['names']
+            
+            mov =  traducido[5]['name']
+        movimi.append(mov)
+
+    return movimi
+
+            #print(f"  {traducido[5]['name']}")
         
+
+def generar_pokemon_h(numero, x, niv):
+    atrapado = False
+    if x == True:
+        atrapado = True
+
+    elif x == False:
+        atrapado = False
+
+
+    nivel = niv
+
+    respuesta = requests.get('https://pokeapi.co/api/v2/type').json()
+    pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{numero}/").json()
+    especie = requests.get(pokemon['species']['url']).json()
+    tipo_pokemon = pokemon['types']
+    nivel = 5
+    #print("\n")
+    #print("\t Este es tu pokemon:")
+    id = pokemon['id']
+        #print(f"\tNo. {pokemon['id']}")
+    nombre = pokemon['name']
+        #print(f"\ttu pokemon: {pokemon['name']}")
+        #print(f"\tEl nombre que le diste es: {apodo}")
+        #nivel = 5
+        #print(f"\tSu nivel es: {nivel}")
+    xp = pokemon['base_experience']
+        #print(f"\tXp es :{xp}")
+        #print("\tTipo de Pokemon:")
+    tipos = []
+    for i, tipo in enumerate(tipo_pokemon):
+        traduccion= requests.get(tipo['type']['url']).json()
+        traducido=traduccion['names']
+        tip = traducido[4]['name']
+            #tipo = print(f"\t{i+1}-  {traducido[4]['name']}")
+        tipos.append(tip)
+
+        # Movimientos Muestra todo, tiene que ser solo cuatro
+    movi_pokemon = pokemon['moves']
+
+    movimi = movimientos(numero) 
+
+        #print('\tStats del pokemon')
+    statss = []
+        
+    for item in pokemon['stats']:
+        item['stat']['name']
+                #stats = print(f"\t- {item['base_stat']} ")
+        stat = item['base_stat']
+        statss.append(stat)
+
+        #input('\tPresione una tecla para continuar')
+        #equipo.equipo_poke(id, nombre, apo, xp, tipos, movimi, statss)
+    
+    poke.insertar_inicio(nivel, id, nombre, xp, tipos, movimi, statss, atrapado)
 
 class  Pokemon : 
     def  __init__ ( self, opcion ,nivel, movi, señal='======='):
@@ -163,8 +272,10 @@ class  Pokemon :
 
     def devolver(self):
         return mochila.recorrer()
-        
 
+        
+    def devolver_h(self):
+        return poke.recorrer()
 
     def batalla(self, Pokemon2):
 
@@ -252,7 +363,8 @@ class  Pokemon :
                 if a>=255:
                     impresion_letras("'¡POKEMON CAPTURADO!...")
                     mote = input('Ingrese un nombre para su pokemon: ')
-                    equipo_pokemon(Pokemon2.id, mote)
+                    equipo_pokemon(Pokemon2.id, mote, Pokemon2.nivel)
+                    generar_pokemon_h(Pokemon2.id, True, Pokemon2.nivel)
                     Pokemon2.ps = 0
                     
                 else:
@@ -297,6 +409,9 @@ class  Pokemon :
                 aleatorio= randint(0,255)
                 if aleatorio<f:
                     impresion_letras("¡HUIDA EXITOSA!...")
+                    generar_pokemon_h(Pokemon2.id, False, Pokemon2.nivel)
+                    self.ps = 0
+
                 else:
                     impresion_letras("¡NO SE PUEDE HUIR!...")
     # CODIGO DE LA SELECCION "HISTORIAL COMBATE"
