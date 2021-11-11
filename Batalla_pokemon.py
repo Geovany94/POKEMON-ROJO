@@ -1,6 +1,5 @@
 import sys
-import time
-import numpy as np 
+import time 
 import requests
 from random import randint
 from Generar_datos import Capturar_poke, Datos, Huir
@@ -72,7 +71,7 @@ def datos_combate(opcion):
         traducido=traduccion['names']
         valor=tipo['base_stat']
         datos.append(valor)
-    return str(*datos)
+    return str(datos)
 
    
 # IMPRESION DE PALABRAS LETRA POR LETRA
@@ -117,18 +116,18 @@ class  Pokemon :
         print("PS",Pokemon2.escribir, Pokemon2.ps)
         ps_pokeini=self.ps
         ps_pokesal=Pokemon2.ps
+        turno = randint(0,2)
 
 
- 
         while (self.ps > 0) and (Pokemon2.ps > 0):
             pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{self.opcion}").json()
             propor_captura= pokemon['capture_rate']
 
             
-            print(f"\n{self.name}\t\tPS\t{self.ps}")
-            print(f"{Pokemon2.name}\t\tPS\t{Pokemon2.ps}\n")
+            print(f"\n{self.nombre}\t\tPS\t{self.ps}")
+            print(f"{Pokemon2.nombre}\t\tPS\t{Pokemon2.ps}\n")
 
-            print(f"Go {self.name}!")
+            print(f"Go {self.nombre}!")
             print('1. ATACAR')
             print('2. CAPTURAR')
             print('3. OBJETOS CURATIVOS')
@@ -137,12 +136,12 @@ class  Pokemon :
             eleccion=int(input())
             if eleccion==1:
                 time.sleep(1)
-                print(f"\n{self.name}\t\tHLTH\t{self.health}")
-                print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+                print(f"\n{self.nombre}\t\tHLTH\t{self.health}")
+                print(f"{Pokemon2.nombre}\t\tHLTH\t{Pokemon2.health}\n")
                 time.sleep(0.5)
-                if Pokemon2.ps <= 0:
-                    impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
-                    break
+                #if Pokemon2.ps <= 0:
+                   # impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
+                    #break
 
             elif eleccion==2:
                 a=0
@@ -154,7 +153,7 @@ class  Pokemon :
                 print("2. Superball", superball)
                 print("3. Ultraball", ultraball)
                 print("4. Masterball", masterball)
-                opcion=int(input)
+                opcion=int(input())
                 if opcion ==1:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
                     a= infor.capturar_pokemon_sal()
@@ -166,7 +165,7 @@ class  Pokemon :
                 elif opcion ==3:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, ultraball)
                     a= infor.capturar_pokemon_sal()
-                    hiperpocion= hiperpocion-2
+                    ultraball= ultraball-2
                 elif opcion ==4:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, masterball)
                     a= infor.capturar_pokemon_sal()
@@ -190,7 +189,7 @@ class  Pokemon :
                 print("2. Superpocion", superpocion)
                 print("3. Hiperpocion", hiperpocion)
                 print("4. Restaurar todo", restaurart_todo)
-                opcion=int(input)
+                opcion=int(input())
                 if opcion ==1:
                     pocion= pocion-20
                     self.ps= self.ps +20
@@ -228,19 +227,19 @@ class  Pokemon :
             
            
 
-            print(f"Go {Pokemon2.name}!")
+            #print(f"Go {Pokemon2.name}!")
     
-            time.sleep(1)
+            #time.sleep(1)
         
-            time.sleep(1)
-            print(f"{self.name}\t\tHLTH\t{self.health}")
-            print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
-            time.sleep(.5)
+            #time.sleep(1)
+            #print(f"{self.name}\t\tHLTH\t{self.health}")
+            #print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+            #time.sleep(.5)
 
             # Check to see if Pokemon fainted
-            if self.bars <= 0:
-                print("\n..." + self.name + ' fainted.')
-                break
+            #if self.bars <= 0:
+                #print("\n..." + self.name + ' fainted.')
+               # break
 
 
 
