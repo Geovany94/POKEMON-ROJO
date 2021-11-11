@@ -247,6 +247,8 @@ class  Pokemon :
 
                     
                     impresion_letras("'¡POKEMON CAPTURADO!...")
+                    mote = input('Ingrese un nombre para su pokemon: ')
+                    equipo_pokemon(numero, mote)
                     
 
                 else:
