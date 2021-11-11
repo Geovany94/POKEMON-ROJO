@@ -13,7 +13,7 @@ mochila = Mochila()
 # esta funcion me verifica si la lista que le mande esta vacia, valor=booleano(True,False)
 def lista(lista):
     return not lista
-    
+
 
 def pokeapy(opcion, busca):
     pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon/{opcion}/").json()
@@ -75,7 +75,7 @@ def datos_combate(opcion):
         traducido=traduccion['names']
         valor=tipo['base_stat']
         datos.append(valor)
-    return str(*datos)
+    return str(datos)
 
    
 # IMPRESION DE PALABRAS LETRA POR LETRA
@@ -159,13 +159,15 @@ class  Pokemon :
         self.ps= 0
         self.escribir= señal
         self.estadisticas= []
+        self.id= 0
         
 
 
     def batalla(self, Pokemon2):
 
         #LUCHA DE DOS POKEMONS
-        #IMPRIME INFORMACION DE LA PELEA
+        #IMPRIME INFORMACION DE LA PELE
+        self.id= pokeapy(self.opcion,'id')
         self.ps= puntos_salud(self,self.opcion)
         self.estadisticas= datos_combate(self.opcion)
         self.nombre= pokeapy(self.opcion,'name' )
@@ -177,6 +179,7 @@ class  Pokemon :
         print("\nVS")
 
         #INFORMACION DEL POKEMON SALVAHE
+        Pokemon2.id= pokeapy(Pokemon2.opcion, 'id')
         Pokemon2.ps= puntos_salud(self,Pokemon2.opcion)
         Pokemon2.estadisticas= datos_combate(Pokemon2.opcion)
         Pokemon2.nombre= pokeapy(Pokemon2.opcion,'name' )
@@ -192,12 +195,12 @@ class  Pokemon :
             pokemon= requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{self.opcion}").json()
             propor_captura= pokemon['capture_rate']
 
-            
-            print(f"\n{self.name}\t\tPS\t{self.ps}")
+            print(self.id)
+            print(f"\n{self.nombre}\t\tPS\t{self.ps}")
+            print(Pokemon2.id)
+            print(f"{Pokemon2.nombre}\t\tPS\t{Pokemon2.ps}\n")
 
-            print(f"{Pokemon2.name}\t\tPS\t{Pokemon2.ps}\n")
-
-            print(f"Go {self.name}!")
+            print(f"Go {self.nombre}!")
             print('1. ATACAR')
             print('2. CAPTURAR')
             print('3. OBJETOS CURATIVOS')
@@ -209,9 +212,9 @@ class  Pokemon :
                 print(f"\n{self.name}\t\tHLTH\t{self.health}")
                 print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
                 time.sleep(0.5)
-                if Pokemon2.ps <= 0:
-                    impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
-                    break
+                #if Pokemon2.ps <= 0:
+                    #impresion_letras("\n..." + Pokemon2.name + 'FUE DERROTADO')
+                   # break
 
             elif eleccion==2:
                 a=0
@@ -223,7 +226,7 @@ class  Pokemon :
                 print("2. Superball", superball)
                 print("3. Ultraball", ultraball)
                 print("4. Masterball", masterball)
-                opcion=int(input)
+                opcion=int(input())
                 if opcion ==1:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
                     a= infor.capturar_pokemon_sal()
@@ -235,7 +238,7 @@ class  Pokemon :
                 elif opcion ==3:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, ultraball)
                     a= infor.capturar_pokemon_sal()
-                    hiperpocion= hiperpocion-2
+                    ultraball= ultraball-2
                 elif opcion ==4:
                     infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, masterball)
                     a= infor.capturar_pokemon_sal()
@@ -244,11 +247,7 @@ class  Pokemon :
                     print('\tERROR-> La opción elejida no existe.\n')
 
                 if a>=255:
-
-                    
                     impresion_letras("'¡POKEMON CAPTURADO!...")
-                    
-
                 else:
                     impresion_letras("'¡POKEMON NO CAPTURADO!...")
 
@@ -264,7 +263,7 @@ class  Pokemon :
                 print("2. Superpocion", superpocion)
                 print("3. Hiperpocion", hiperpocion)
                 print("4. Restaurar todo", restaurart_todo)
-                opcion=int(input)
+                opcion=int(input())
                 if opcion ==1:
                     pocion= pocion-20
                     self.ps= self.ps +20
@@ -302,19 +301,19 @@ class  Pokemon :
             
            
 
-            print(f"Go {Pokemon2.name}!")
+           # print(f"Go {Pokemon2.name}!")
     
-            time.sleep(1)
+            #time.sleep(1)
         
-            time.sleep(1)
-            print(f"{self.name}\t\tHLTH\t{self.health}")
-            print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
-            time.sleep(.5)
+            #time.sleep(1)
+            #print(f"{self.name}\t\tHLTH\t{self.health}")
+            #print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
+            #time.sleep(.5)
 
             # Check to see if Pokemon fainted
-            if self.bars <= 0:
-                print("\n..." + self.name + ' fainted.')
-                break
+            #if self.bars <= 0:
+               # print("\n..." + self.name + ' fainted.')
+               # break
 
 
 
