@@ -1,6 +1,5 @@
 import sys
 import time
-import numpy as np 
 import requests
 from random import randint
 from Generar_datos import Capturar_poke, Datos, Huir
@@ -149,6 +148,7 @@ def equipo_pokemon(numero, apodo):
     
    
         mochila.insertar_inicio(nivel, id, nombre, apodo, xp, tipos, movimi, statss)
+        
 
 class  Pokemon : 
     def  __init__ ( self, opcion ,nivel, movi, señal='======='):
@@ -160,6 +160,9 @@ class  Pokemon :
         self.escribir= señal
         self.estadisticas= []
         self.id= 0
+
+    def devolver(self):
+        return mochila.recorrer()
         
 
 
