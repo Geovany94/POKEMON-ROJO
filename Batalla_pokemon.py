@@ -5,8 +5,9 @@ from random import randint
 from Generar_datos import Capturar_poke, Datos, Huir
 from lista import Mochila
 from pokedex import pokedex_h
+from tienda import Tienda
 
-
+tienda = Tienda(1000)
 mochila = Mochila()
 poke = pokedex_h()
 
@@ -331,34 +332,51 @@ class  Pokemon :
                    # break
 
             elif eleccion==2:
+                tienda.ver_mochila()
                 a=0
                 pokeball=1
                 superball=1.5
                 ultraball=2
                 masterball=255
-                print("1. Pokeball", pokeball)
-                print("2. Superball", superball)
-                print("3. Ultraball", ultraball)
-                print("4. Masterball", masterball)
-                opcion=int(input())
-                if opcion ==1:
-                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
-                    a= infor.capturar_pokemon_sal()
-                    pokeball= pokeball-1
-                elif opcion ==2:
-                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, superball)
-                    a= infor.capturar_pokemon_sal()
-                    superball= superball-1.5
-                elif opcion ==3:
-                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, ultraball)
-                    a= infor.capturar_pokemon_sal()
-                    ultraball= ultraball-2
-                elif opcion ==4:
-                    infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, masterball)
-                    a= infor.capturar_pokemon_sal()
-                    masterball= masterball-255
+                if tienda.pokeball > 0 or tienda.superball > 0 or tienda.ultraball > 0 or tienda.masterball > 0:
+                    print("1. Pokeball", pokeball, "\tEn existencia: ", tienda.pokeball)
+                    print("2. Superball", superball, "\tEn existencia: ", tienda.superball)
+                    print("3. Ultraball", ultraball, "\tEn existencia: ", tienda.ultraball)
+                    print("4. Masterball", masterball, "\tEn existencia: ", tienda.masterball)
+                    opcion=int(input())
+                    if opcion ==1:
+                        infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
+                        a= infor.capturar_pokemon_sal()
+                        pokeball= pokeball-1
+                        
+                    elif opcion ==2:
+                        infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, superball)
+                        a= infor.capturar_pokemon_sal()
+                        superball= superball-1.5
+                        tienda.superball += 1
+                    elif opcion ==3:
+                        infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, ultraball)
+                        a= infor.capturar_pokemon_sal()
+                        ultraball= ultraball-2
+                        tienda.ultraball += 1
+                    elif opcion ==4:
+                        infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, masterball)
+                        a= infor.capturar_pokemon_sal()
+                        masterball= masterball-255
+                        tienda.masterball += 1
+                    else:
+                        print('\tERROR-> La opción elejida no existe.\n')
+
+                    if a>=255:
+                        impresion_letras("'¡POKEMON CAPTURADO!...")
+                        mote = input('Ingrese un nombre para su pokemon: ')
+                        equipo_pokemon(Pokemon2.id, mote)
+                        
+                    else:
+                        impresion_letras("'¡POKEMON NO CAPTURADO!...")
                 else:
-                    print('\tERROR-> La opción elejida no existe.\n')
+                    print(tienda.ver_mochila())
+                    print('No tiene Poke Ball de ningun tipo... :"( ')
 
                 if a>=255:
                     impresion_letras("'¡POKEMON CAPTURADO!...")
@@ -366,9 +384,7 @@ class  Pokemon :
                     equipo_pokemon(Pokemon2.id, mote, Pokemon2.nivel)
                     generar_pokemon_h(Pokemon2.id, True, Pokemon2.nivel)
                     Pokemon2.ps = 0
-                    
-                else:
-                    impresion_letras("'¡POKEMON NO CAPTURADO!...")
+                       
 
 
 

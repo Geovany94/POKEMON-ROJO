@@ -8,11 +8,13 @@ from pokedex import pokedex_h
 from Batalla_pokemon import Pokemon
 equipo = Equipo(5)
 mochila = Mochila()
+
 tienda = Tienda(1000)
 po = Pokemon(0,0,0)
-
 poke = pokedex_h()
+tienda = Tienda(1000)
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
+
 
 def menu_inicial():
     os.system('cls')
@@ -111,17 +113,7 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
             opc = int(input())
             if opc == 1:
                 os.system('cls')
-                print('\tInventario de objetos')
-                print('\tPoke ball')
-                print('\t* Pokeball ',tienda.pokeball)
-                print('\t* Ultraball ',tienda.ultraball)
-                print('\t* Superball ',tienda.superball)
-                print('\t* Masterball ',tienda.masterball)
-                print('\tPociones ')
-                print('\t* Pocion ',tienda.pocion)
-                print('\t* Super pocion ',tienda.superpocion)
-                print('\t* Hiperpocion ',tienda.hiperpocion)
-                print('\t* Restaurar toda la vida ',tienda.res_todo)
+                tienda.ver_mochila()
                 os.system('pause')
             elif opc == 2:
                 os.system('cls')
@@ -168,7 +160,6 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
                     tienda.pokeballs(opcion3)
                 else:
                     print('\tERROR-> La opción elejida no existe.\n')
-                os.system('pause')
                 os.system('pause')
             else:
                 print('\tERROR-> La opción elejida no existe.\n')

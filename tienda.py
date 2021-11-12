@@ -50,7 +50,7 @@ class Tienda:
     def pokeballs(self, opcion):
         if opcion == 1:
             if self.dinero >= 200:
-                self.pokeball =+ 1
+                self.pokeball += 1
                 self.dinero = self.dinero - 200
                 print('*Ha comprado una Pokeball*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -61,7 +61,7 @@ class Tienda:
             
         elif opcion == 2:
             if self.dinero >= 600:
-                self.superball =+ 1
+                self.superball += 1
                 self.dinero = self.dinero - 600
                 print('*Ha comprado una Superball*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -72,7 +72,7 @@ class Tienda:
         
         elif opcion == 3:
             if self.dinero >= 1200:
-                self.ultraball =+ 1
+                self.ultraball += 1
                 self.dinero = self.dinero - 1200
                 print('*Ha comprado una Ultraball*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -82,7 +82,7 @@ class Tienda:
             # os.system('pause')
         elif opcion == 4:
             if self.dinero >= 100000:
-                self.masterball =+ 1
+                self.masterball += 1
                 self.dinero = self.dinero - 100000
                 print('*Ha comprado una Masterball*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -94,7 +94,7 @@ class Tienda:
     def obj_curativos(self,opcion):
         if opcion == 1:
             if self.dinero >= 300:
-                self.pocion =+ 1
+                self.pocion += 1
                 self.dinero = self.dinero - 300
                 print('*Ha comprado una Pocion*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -104,7 +104,7 @@ class Tienda:
             # os.system('pause')
         elif opcion == 2:
             if self.dinero >= 700:
-                self.superpocion =+ 1
+                self.superpocion += 1
                 self.dinero = self.dinero - 700
                 print('*Ha comprado una Superpocion*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -114,7 +114,7 @@ class Tienda:
             # os.system('pause')
         elif opcion == 3:
             if self.dinero >= 1200:
-                self.hiperpocion =+ 1
+                self.hiperpocion += 1
                 self.dinero = self.dinero - 1200
                 print('*Ha comprado una Hiperpocion*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -124,7 +124,7 @@ class Tienda:
             # os.system('pause')
         elif opcion == 4:
             if self.dinero >= 3000:
-                self.res_todo =+ 1
+                self.res_todo += 1
                 self.dinero = self.dinero - 3000
                 print('*Ha comprado Restaurar vida completa*')
                 print('Su nuevo saldo es: ',self.dinero)
@@ -132,3 +132,16 @@ class Tienda:
             else:
                 print('Dinero insuficiente')
             # os.system('pause')
+
+    def ver_mochila(self):
+        print('\tInventario de objetos')
+        print('\tPoke ball')
+        print('\t* Pokeball ',self.pokeball)
+        print('\t* Superball ',self.superball)
+        print('\t* Ultraball ',self.ultraball)
+        print('\t* Masterball ',self.masterball)
+        print('\tPociones ')
+        print('\t* Pocion ',self.pocion)
+        print('\t* Superpocion ',self.superpocion)
+        print('\t* Hiperpocion ',self.hiperpocion)
+        print('\t* Restaurar toda la vida ',self.res_todo)
