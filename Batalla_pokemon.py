@@ -371,7 +371,7 @@ class  Pokemon :
                 if a>=255:
                     impresion_letras("'¡POKEMON CAPTURADO!...")
                     mote = input('Ingrese un nombre para su pokemon: ')
-                    equipo_pokemon(Pokemon2.id, mote)
+                    equipo_pokemon(Pokemon2.id, mote, Pokemon2.nivel)
                     
                 else:
                     impresion_letras("'¡POKEMON NO CAPTURADO!...")
