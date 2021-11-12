@@ -13,6 +13,9 @@ class Tienda:
         self.ultraball = 10
         self.masterball = 1
     # Funciones de uso
+    def retornar(self):
+        return self.ver_mochila()
+
     def usar_pokeballs(self, opcion):
         if self.pokeball > 0 or self.superball > 0 or self.ultraball > 0 or self.masterball > 0:    
             if opcion == 1:
