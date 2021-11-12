@@ -70,7 +70,6 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
         print('\t 3. Pokédex')
         print('\t 4. Tienda')
         print('\t 0. Salir del juego')
-        print(f"\t El tamaño es: {mochila.tam}")
         print('\n\tOPCION: "\t')
         res = str(input('\t '))
         if res=='1':
@@ -98,7 +97,9 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
 
 
         elif res=='3':
-            pokedex()
+            d = po.devolver_h()
+            print(d)
+            input('pause...') 
         elif res=='4':
 
             os.system('cls')
