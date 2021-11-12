@@ -9,7 +9,7 @@ from Batalla_pokemon import Pokemon
 equipo = Equipo(5)
 mochila = Mochila()
 
-tienda = Tienda(1000)
+tienda = Tienda(1000000)
 po = Pokemon(0,0,0)
 poke = pokedex_h()
 tienda = Tienda(1000)
@@ -103,7 +103,6 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
             print(d)
             input('pause...') 
         elif res=='4':
-
             os.system('cls')
             print('\n\t\tTIENDA POKEMON \n')
             print('\t 1-> Ver Mochila')

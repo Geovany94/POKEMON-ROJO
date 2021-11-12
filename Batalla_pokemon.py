@@ -7,7 +7,7 @@ from lista import Mochila
 from pokedex import pokedex_h
 from tienda import Tienda
 
-tienda = Tienda(1000)
+tienda = Tienda(1000000)
 mochila = Mochila()
 poke = pokedex_h()
 
@@ -332,18 +332,17 @@ class  Pokemon :
                    # break
 
             elif eleccion==2:
-                tienda.ver_mochila()
                 a=0
                 pokeball=1
                 superball=1.5
                 ultraball=2
                 masterball=255
-                if tienda.pokeball > 0 or tienda.superball > 0 or tienda.ultraball > 0 or tienda.masterball > 0:
-                    print("1. Pokeball", pokeball, "\tEn existencia: ", tienda.pokeball)
-                    print("2. Superball", superball, "\tEn existencia: ", tienda.superball)
-                    print("3. Ultraball", ultraball, "\tEn existencia: ", tienda.ultraball)
-                    print("4. Masterball", masterball, "\tEn existencia: ", tienda.masterball)
-                    opcion=int(input())
+                print("1. Pokeball", pokeball)
+                print("2. Superball", superball)
+                print("3. Ultraball", ultraball)
+                print("4. Masterball", masterball)
+                opcion=int(input())
+                if tienda.pokeball > 0 or tienda.superball > 0 or tienda.ultraball > 0 or tienda.masterball >0:
                     if opcion ==1:
                         infor= Capturar_poke(ps_pokeini,self.ps,propor_captura, pokeball)
                         a= infor.capturar_pokemon_sal()
@@ -366,17 +365,16 @@ class  Pokemon :
                         tienda.masterball += 1
                     else:
                         print('\tERROR-> La opción elejida no existe.\n')
-
-                    if a>=255:
-                        impresion_letras("'¡POKEMON CAPTURADO!...")
-                        mote = input('Ingrese un nombre para su pokemon: ')
-                        equipo_pokemon(Pokemon2.id, mote)
-                        
-                    else:
-                        impresion_letras("'¡POKEMON NO CAPTURADO!...")
                 else:
-                    print(tienda.ver_mochila())
-                    print('No tiene Poke Ball de ningun tipo... :"( ')
+                    print('No se pueden usar Pokeballs')
+
+                if a>=255:
+                    impresion_letras("'¡POKEMON CAPTURADO!...")
+                    mote = input('Ingrese un nombre para su pokemon: ')
+                    equipo_pokemon(Pokemon2.id, mote)
+                    
+                else:
+                    impresion_letras("'¡POKEMON NO CAPTURADO!...")
 
                 if a>=255:
                     impresion_letras("'¡POKEMON CAPTURADO!...")

@@ -1,19 +1,22 @@
 import os
+from Generar_datos import Capturar_poke, Datos, Huir
 class Tienda:
+    
     def __init__(self,dinero):
         self.dinero = dinero
-        self.pocion = 0
-        self.superpocion = 0
-        self.hiperpocion = 0
-        self.res_todo = 0
-        self.pokeball = 0
-        self.superball = 0
-        self.ultraball = 0
-        self.masterball = 0
+        self.pocion = 10
+        self.superpocion = 10
+        self.hiperpocion = 10
+        self.res_todo = 10
+        self.pokeball = 10
+        self.superball = 10
+        self.ultraball = 10
+        self.masterball = 1
     # Funciones de uso
     def usar_pokeballs(self, opcion):
         if self.pokeball > 0 or self.superball > 0 or self.ultraball > 0 or self.masterball > 0:    
             if opcion == 1:
+                
                 self.pokeball -= 1
             elif opcion == 2:
                 self.superball -= 1
@@ -145,3 +148,4 @@ class Tienda:
         print('\t* Superpocion ',self.superpocion)
         print('\t* Hiperpocion ',self.hiperpocion)
         print('\t* Restaurar toda la vida ',self.res_todo)
+        
