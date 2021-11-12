@@ -16,6 +16,7 @@ tienda = Tienda(1000)
 clear = lambda: os.system('cls')#limpiar pantalla usar siempre con libreria os 
 
 
+
 def menu_inicial():
     os.system('cls')
     os.system('color E0')
@@ -113,7 +114,7 @@ def menu_principal(opcion, mote,entrenador, movi_poke):
             opc = int(input())
             if opc == 1:
                 os.system('cls')
-                tienda.ver_mochila()
+                tienda.retornar()
                 os.system('pause')
             elif opc == 2:
                 os.system('cls')

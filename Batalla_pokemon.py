@@ -7,6 +7,8 @@ from lista import Mochila
 from pokedex import pokedex_h
 from tienda import Tienda
 
+
+
 tienda = Tienda(1000)
 mochila = Mochila()
 poke = pokedex_h()
@@ -332,7 +334,8 @@ class  Pokemon :
                    # break
 
             elif eleccion==2:
-                tienda.ver_mochila()
+                tienda.retornar()
+                
                 a=0
                 pokeball=1
                 superball=1.5
